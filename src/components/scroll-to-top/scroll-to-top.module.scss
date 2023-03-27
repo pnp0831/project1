@@ -1,0 +1,40 @@
+@import '../../styles/variables.module.scss';
+@import '../../styles/mixin.scss';
+
+.ScrollToTop {
+  cursor: pointer;
+  position: fixed;
+  right: -100%;
+  bottom: 20px;
+  transition: 0.3s all ease-in;
+  z-index: 99;
+
+  height: 50px;
+  width: 50px;
+
+  img {
+    height: 50px;
+    width: 50px;
+  }
+
+
+
+  @include mobile {
+    width: 35px;
+    height: 35px;
+    bottom: 10px;
+
+    img {
+      height: 35px;
+      width: 35px;
+    }
+  }
+
+  &.isShow {
+    right: 20px;
+
+    @include mobile {
+      right: 10px;
+    }
+  }
+}

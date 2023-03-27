@@ -1,0 +1,50 @@
+@import '../../../styles/variables.module.scss';
+@import '../../../styles/mixin.scss';
+
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  row-gap: 15px;
+  margin: auto;
+
+  @include mobile {
+    padding: 10px 0;
+    row-gap: 10px;
+
+    label {
+      width: 100%;
+      height: 44px;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+
+  @include tablet {
+    padding: 10px 0;
+    row-gap: 15px;
+
+    label {
+      width: 100%;
+      height: 44px;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  input {
+    width: 550px;
+
+    @include tablet {
+      width: 400px;
+    }
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+}

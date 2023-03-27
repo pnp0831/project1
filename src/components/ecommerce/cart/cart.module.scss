@@ -1,0 +1,267 @@
+@import '../../../styles/variables.module.scss';
+@import '../../../styles/mixin.scss';
+
+.container {
+  padding-top: 50px;
+  display: flex;
+  justify-content: space-between;
+
+  @include tablet {
+    flex-direction: column;
+    padding-bottom: 50px;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    padding: 20px 0;
+  }
+
+  .carts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: $fafafa-color;
+    height: auto;
+    padding: 20px;
+
+    flex-basis: 66.666%;
+    margin-right: 20px;
+
+    >h4 {
+      text-transform: uppercase;
+      height: 40px;
+      display: flex;
+      align-items: center;
+
+    }
+
+    @include tablet {
+      margin: 0;
+      // height: 282px;
+      flex-basis: unset;
+    }
+
+
+    @include mobile {
+      margin: 0;
+      height: 100%;
+      padding: 10px;
+      flex-basis: unset;
+    }
+
+    &.cartsEmpty {
+      @include tablet {
+        height: 282px;
+      }
+    }
+
+
+
+    &.cartsFull {
+      // flex-direction: row;
+      // justify-content: unset;
+
+      @include mobile {
+        flex-direction: column;
+      }
+    }
+
+    >button {
+      margin-top: 20px;
+
+      @include mobile {
+        margin-top: 10px;
+      }
+
+    }
+
+    .cart {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 10px;
+      background: $secondary-color;
+
+
+      @include mobile {
+        padding: 0;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 20px;
+
+        @include mobile {
+          margin-bottom: 0;
+        }
+      }
+
+      .cartName {
+        display: flex;
+        align-items: center;
+
+        img {
+          height: 126px;
+          width: 126px;
+          border: 1px solid $de3e4e-color;
+
+          @include mobile {
+            height: 80px;
+            width: 80px;
+          }
+        }
+
+        .cartNameInfo {
+          margin-left: 10px;
+
+          @include tablet {
+            width: max-content;
+          }
+
+          div {
+            height: 25px;
+            display: flex;
+            align-items: center;
+
+            &:last-child {
+              color: $bcbcbc-color;
+            }
+          }
+
+
+        }
+      }
+
+
+    }
+
+    .cartToolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 532px;
+
+      @include tablet {
+        width: 100%;
+        justify-content: flex-end;
+      }
+
+      @include mobile {
+        width: 100%;
+        margin: 10px 0;
+        height: 30px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      span {
+        color: $ff0000-color;
+        width: 107px;
+        text-align: center;
+
+        @include tablet {
+          margin: 0 42px;
+        }
+      }
+
+      .removeBtn {
+        height: 44px;
+        width: 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      @include desktop {
+        .cartInput {
+          height: 40px;
+          width: 140px;
+
+          input {
+            width: 60px;
+            height: 100%;
+          }
+
+          button {
+            height: 100%;
+            width: 40px;
+          }
+        }
+      }
+    }
+  }
+
+  .info {
+    padding: 20px 20px 10px 20px;
+    border: 1px solid $de3e4e-color;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex-basis: 33.333%;
+
+
+    @include tablet {
+      margin: 36px auto auto auto;
+      width: 540px;
+      flex-basis: unset;
+
+      button {
+        align-self: center;
+      }
+    }
+
+    @include mobile {
+      margin: 10px 10px 0px 10px;
+    }
+
+    .divider {
+      border-bottom: 1px solid $de3e4e-color;
+      margin: 10px 0;
+    }
+
+
+    .subInfo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      height: 30px;
+
+      @include tablet {
+        height: 23px;
+      }
+
+      @include mobile {
+        height: 19px;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+
+    .subInfoTotal {
+      height: 30px;
+      margin-bottom: 0 !important;
+
+      @include tablet {
+        height: 23px;
+      }
+
+      @include mobile {
+        height: 19px;
+      }
+
+    }
+
+    .subInfoButton {
+      @include mobile {
+        text-align: center;
+      }
+    }
+
+  }
+}

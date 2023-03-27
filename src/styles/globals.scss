@@ -1,0 +1,185 @@
+@import './variables.module.scss';
+@import './mixin.scss';
+@import './reset.scss';
+
+
+body {
+  margin: 0;
+  scroll-behavior: smooth;
+  font-family: 'Roboto', sans-serif;
+
+}
+
+
+h1 {
+  font-size: $dheading-h1;
+
+  @include tablet {
+    font-size: $theading-h1;
+  }
+
+  @include mobile {
+    font-size: $mheading-h1;
+  }
+
+}
+
+h2 {
+  font-size: $dheading-h2;
+
+  @include tablet {
+    font-size: $theading-h2;
+  }
+
+  @include mobile {
+    font-size: $mheading-h2;
+  }
+
+}
+
+h3 {
+  font-size: $dheading-h3;
+
+  @include tablet {
+    font-size: $theading-h3;
+  }
+
+  @include mobile {
+    font-size: $mheading-h3;
+  }
+
+}
+
+h4 {
+  font-size: $dheading-h4;
+
+  @include tablet {
+    font-size: $theading-h4;
+  }
+
+  @include mobile {
+    font-size: $mheading-h4;
+  }
+
+}
+
+h5 {
+  font-size: $dheading-h5;
+
+  @include tablet {
+    font-size: $theading-h5;
+  }
+
+  @include mobile {
+    font-size: $mheading-h5;
+  }
+
+}
+
+h6 {
+  font-size: $dheading-h6;
+
+  @include tablet {
+    font-size: $theading-h6;
+  }
+
+  @include mobile {
+    font-size: $mheading-h6;
+  }
+
+}
+
+.body1 {
+  font-size: $dbody-1;
+
+  @include tablet {
+    font-size: $tbody-1;
+  }
+
+  @include mobile {
+    font-size: $mbody-1;
+  }
+}
+
+.body2 {
+  font-size: $dbody-2;
+
+  @include tablet {
+    font-size: $tbody-2;
+  }
+
+  @include mobile {
+    font-size: $mbody-2;
+  }
+}
+
+.body3 {
+  font-size: $dbody-3;
+
+  @include tablet {
+    font-size: $tbody-3;
+  }
+
+  @include mobile {
+    font-size: $mbody-3;
+  }
+}
+
+.body4 {
+  font-size: $dbody-4;
+
+  @include tablet {
+    font-size: $tbody-4;
+  }
+
+  @include mobile {
+    font-size: $mbody-4;
+  }
+}
+
+.body5 {
+  font-size: $dbody-5;
+
+  @include tablet {
+    font-size: $tbody-5;
+
+  }
+
+  @include mobile {
+    font-size: $mbody-5;
+
+  }
+}
+
+.even {
+  background: #F8F9FA;
+}
+
+
+a:visited {
+  color: initial
+}
+
+ul li.active h6 {
+  font-weight: bold !important;
+}
+
+
+
+input::-webkit-input-placeholder,
+input::-moz-placeholder,
+input:-ms-input-placeholder,
+input::placeholder {
+  color: $bcbcbc-color;
+}
+
+
+input:focus::-webkit-input-placeholder,
+input:hover::-webkit-input-placeholder {
+  color: $primary-color
+}
+
+
+.mb-20 {
+  margin-bottom: 20px;
+}

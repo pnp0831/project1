@@ -1,0 +1,123 @@
+@import '../../../styles/variables.module.scss';
+@import '../../../styles/mixin.scss';
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: $secondary-color;
+  height: auto;
+  border-bottom: 1px solid $de3e4e-color;
+  z-index: 999;
+
+
+  @include mobile {
+    font-size: 12px;
+    height: 80px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+
+    .logo {
+      @include mobile {
+        width: 180px;
+        height: 79px;
+      }
+
+      cursor: pointer;
+    }
+  }
+
+
+}
+
+
+
+.mainMenu {
+  display: flex;
+  // width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100px;
+
+  &.menuUser {
+    width: 84px;
+  }
+
+  ul {
+    @include tablet-mobile {
+      display: none;
+    }
+
+    display: flex;
+
+    li {
+      &:not(:last-child) {
+        margin-right: 50px;
+      }
+
+      h6 {
+        transition: all 0.3s ease-out;
+        font-weight: normal;
+        cursor: pointer;
+
+        &:active,
+        &:hover,
+        &:focus {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .menuBar {
+      display: flex;
+      align-items: center;
+
+      img {
+        cursor: pointer;
+      }
+
+      .shoppingCart {
+        margin-left: 10px;
+        position: relative;
+
+        span {
+          position: absolute;
+          top: -5px;
+          right: -10px;
+        }
+      }
+    }
+
+
+  }
+}
+
+.dropDownUser {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+
+  .dropDownUserContent {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: -27px;
+    min-width: 120px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid $primary-color;
+    height: 25px;
+    background: $secondary-color;
+    align-items: center;
+    z-index: 1;
+  }
+
+  &:hover .dropDownUserContent {
+    display: flex;
+  }
+
+}

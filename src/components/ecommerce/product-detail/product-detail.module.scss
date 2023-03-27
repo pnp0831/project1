@@ -1,0 +1,96 @@
+@import '../../../styles/variables.module.scss';
+@import '../../../styles/mixin.scss';
+
+.productDetail {
+  padding: 50px 0;
+  display: flex;
+  justify-content: space-between;
+
+  @include mobile {
+    padding: 10px 0;
+    justify-self: unset;
+    flex-direction: column;
+  }
+
+  .image {
+    margin-right: 20px;
+
+    @include tablet {
+      margin-right: 30px;
+    }
+
+    @include mobile {
+      margin: 0;
+      text-align: center;
+      padding: 10px;
+    }
+
+    img {
+      object-fit: cover;
+      width: 830px;
+      height: 1000px;
+
+      @include tablet {
+        width: 400px;
+        height: 450px;
+      }
+
+      @include mobile {
+        width: 250px;
+        height: 250px;
+      }
+    }
+  }
+
+  .info {
+    width: 100%;
+    padding: 0 10px;
+
+    @include mobile {
+      margin-top: 10px;
+    }
+
+    h5 {
+      height: 33px;
+      display: flex;
+      align-items: center;
+
+      @include mobile {
+        height: 26px;
+      }
+    }
+
+    h4 {
+      height: 38px;
+      display: flex;
+      align-items: center;
+
+      @include tablet {
+        height: 35px;
+      }
+
+      @include mobile {
+        height: 30px;
+      }
+    }
+  }
+
+  .divider {
+    border-bottom: 1px solid $de3e4e-color;
+    margin: 20px 0;
+
+    @include tablet-mobile {
+      margin: 15px 0;
+    }
+
+
+  }
+
+  .wrapperBtn {
+    margin-top: 20px;
+
+    @include tablet-mobile {
+      margin-top: 15px;
+    }
+  }
+}

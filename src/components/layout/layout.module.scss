@@ -1,0 +1,14 @@
+@import '../../styles/mixin.scss';
+
+.layout {
+  margin-top: 100px;
+  min-height: 500px;
+
+  @include mobile {
+    margin-top: 80px;
+  }
+}
+
+.noMargin {
+  margin-top: 0 !important;
+}

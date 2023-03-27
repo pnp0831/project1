@@ -1,0 +1,30 @@
+@import '../../../styles/variables.module.scss';
+@import '../../../styles/mixin.scss';
+
+
+.productsList {
+  padding-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+
+
+  @include mobile {
+    padding: 10px 10px 0 10px;
+  }
+
+
+}
+
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0;
+  flex-direction: column;
+
+  button {
+    margin-top: 20px;
+  }
+}

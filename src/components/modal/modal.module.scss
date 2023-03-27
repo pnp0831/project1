@@ -1,0 +1,95 @@
+@import '../../styles/variables.module.scss';
+@import '../../styles/mixin.scss';
+
+.modalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: $primary-color;
+    opacity: 0.65;
+    z-index: 998;
+  }
+
+  .modalContent {
+    min-width: 800px;
+    background-color: #fff;
+    z-index: 999;
+
+    border-radius: 15px;
+
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-out;
+
+    &.isTransitioning {
+      top: 50%;
+    }
+
+    &.isEndTransition {
+      top: 120%
+    }
+
+    @include tablet {
+      min-width: 824px;
+    }
+
+
+    @include mobile {
+      width: calc(100% - 20px);
+      min-width: unset;
+    }
+
+    .modalHeader {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-right: 10px;
+
+      @include mobile {
+        height: 30px;
+
+        img {
+          height: 20px;
+          width: 20px;
+        }
+      }
+
+      img {
+        cursor: pointer;
+      }
+    }
+
+    .modalTitle {
+      text-align: center;
+      height: 38px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modalBody {
+      padding: 20px 0;
+
+      @include mobile {
+        padding: 10px;
+      }
+    }
+  }
+}

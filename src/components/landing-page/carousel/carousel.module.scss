@@ -1,0 +1,59 @@
+@import '../../../styles/mixin.scss';
+
+.wrapperOverflow {
+  position: relative;
+  cursor: pointer;
+  padding: 0px 50px 50px 60px;
+
+  @include tablet {
+    padding: 0 60px;
+  }
+
+  @include mobile {
+    padding: 0 40px;
+  }
+
+
+  &.isDown {
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+  }
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+
+    @include mobile {
+      width: 25px;
+      height: 25px;
+    }
+
+    z-index: 2;
+    cursor: pointer;
+    display: none;
+    transition: all ease-in 0.3s;
+    outline: none;
+    user-select: none;
+
+    &:hover {
+      transform: translateY(-50%) scale(1.1) !important;
+    }
+
+    &.iconPrev {
+      background-size: 100%;
+      transform: translate(0, -50%);
+      left: 0;
+    }
+
+    &.iconNext {
+      right: 0;
+      transform: translate(0, -50%);
+    }
+
+    &.active {
+      display: block;
+    }
+  }
+}

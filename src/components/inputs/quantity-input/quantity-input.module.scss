@@ -1,0 +1,73 @@
+@import '../../../styles/variables.module.scss';
+@import '../../../styles/mixin.scss';
+
+.quantityInput {
+  height: 46px;
+  display: flex;
+  border: 1px solid $de3e4e-color;
+  width: 212px;
+
+  display: flex;
+  align-items: center;
+
+  @include tablet {
+    height: 40px;
+    width: 140px;
+  }
+
+  @include mobile {
+    height: 30px;
+    width: 100px;
+  }
+
+  .toolBar {
+    height: 46px;
+    width: 46px;
+    background: $de3e4e-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+
+    @include tablet {
+      height: 40px;
+      width: 40px;
+    }
+
+    @include mobile {
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+
+  input {
+    height: 100%;
+    width: 120px;
+    font-size: $dbody-3;
+    border: none;
+    text-align: center;
+
+    @include tablet {
+      font-size: $tbody-3;
+      width: 60px;
+    }
+
+    @include mobile {
+      font-size: $mbody-3;
+      width: 40px;
+    }
+  }
+}

@@ -1,0 +1,109 @@
+@import '../../../styles/variables.module.scss';
+@import '../../../styles/mixin.scss';
+
+
+.experience {
+  padding-bottom: 50px;
+
+  @include mobile {
+    padding-bottom: 30px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1110px;
+    margin: auto;
+    background: $secondary-color;
+    border-radius: 5px;
+
+    @include tablet-mobile {
+      width: auto;
+    }
+
+    .wrapper {
+      padding: 20px 20px 20px 45px;
+
+      @include mobile {
+        padding: 10px 20px;
+      }
+
+
+      li {
+        border-left: 1px solid $primary-color;
+        position: relative;
+        padding-left: 45px;
+        padding-bottom: 30px;
+
+
+        @include mobile {
+          padding-left: 20px;
+          padding-bottom: 20px;
+        }
+
+
+        &:nth-child(3) {
+          padding-bottom: 0;
+        }
+
+        &:last-child {
+          border: 1px solid transparent;
+
+
+          @include mobile {
+            &::before {
+              top: -1px
+            }
+          }
+
+        }
+
+        &:before {
+          content: '';
+          width: 25px;
+          height: 25px;
+          background: white;
+          border: 1px solid $primary-color;
+          border-radius: 50%;
+          position: absolute;
+          left: -14px;
+          top: 0px;
+        }
+
+        .time {
+          display: flex;
+          align-items: center;
+          font-weight: bold;
+          height: 24px;
+
+          span {
+            &:first-child {
+              margin-right: 10px;
+            }
+          }
+        }
+
+        p {
+          height: 22px;
+
+          @include mobile {
+            height: 16px;
+
+          }
+        }
+
+        desc {
+          color: #4F4F4F;
+        }
+      }
+
+
+    }
+
+  }
+
+
+
+
+}

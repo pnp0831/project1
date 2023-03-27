@@ -1,0 +1,72 @@
+@import '../../../styles/variables.module.scss';
+@import '../../../styles/mixin.scss';
+
+.snackbarContainer {
+  position: fixed;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  transition: all 0.3s ease-out;
+  z-index: 999;
+  width: 820px;
+
+  @include tablet {
+    width: 600px;
+  }
+
+
+  @include mobile {
+    width: 373px;
+  }
+
+
+  .snackbar {
+    position: relative;
+    color: $secondary-color;
+    height: 80px;
+
+
+    .overlay {
+      opacity: 0.8;
+      background: $primary-color;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .snackbarContent {
+
+      .snackBarButton {
+        height: 30px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        img {
+          cursor: pointer;
+          width: 20px;
+          height: 20px;
+          margin-right: 6px;
+          margin-top: 6px;
+        }
+
+      }
+
+      .snackbarMessage {
+        height: 50px;
+        padding: 20px 30px;
+        display: flex;
+        align-items: center;
+
+        @include mobile {
+          padding: 20px;
+        }
+      }
+    }
+  }
+
+}

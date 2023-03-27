@@ -1,0 +1,19 @@
+@import '../../styles/variables.module.scss';
+@import '../../styles/mixin.scss';
+
+.someThingWrong {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  h4 {
+    text-transform: uppercase;
+    margin-bottom: 50px;
+  }
+
+
+  padding: 205px 0;
+
+}

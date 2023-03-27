@@ -1,0 +1,43 @@
+@import '../../styles/variables.module.scss';
+@import '../../styles/mixin.scss';
+
+.button {
+  width: 180px;
+  height: 46px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 1px solid $primary-color;
+  background: $secondary-color;
+  color: $primary-color;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s all ease-in;
+  font-size: $dbody-3;
+
+  &:disabled {
+    cursor: not-allowed;
+    border: 1px solid $bcbcbc-color !important;
+
+    color: $bcbcbc-color !important;
+
+    background: $secondary-color !important;
+  }
+
+  &:hover {
+    border: 1px solid $secondary-color;
+    background: $primary-color;
+    color: $secondary-color;
+  }
+
+  @include tablet {
+    font-size: $tbody-3;
+    width: 160px;
+    height: 42px;
+  }
+
+  @include mobile {
+    font-size: $mbody-3;
+    width: 140px;
+    height: 40px;
+  }
+}
