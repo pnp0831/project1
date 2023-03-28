@@ -183,3 +183,11 @@ input:hover::-webkit-input-placeholder {
 .mb-20 {
   margin-bottom: 20px;
 }
+
+input[error] {
+  border: 1px solid $ff0000-color;
+
+  &:hover {
+    border: 1px solid $ff0000-color;
+  }
+}

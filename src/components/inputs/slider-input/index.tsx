@@ -1,28 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import styles from './slider-input.module.scss';
 
-function SliderInput() {
-  const [sliderValue, setSliderValue] = useState(50);
-
-  const handleChange = (event) => {
-    setSliderValue(event.target.value);
-  };
-
+function SliderInput({ myRef, track, ...props }) {
   return (
-    <div>
-      <label htmlFor="slider-input">Select a value:</label>
-      <input
-        className={styles.sliderInput}
-        id="slider-input"
-        type="range"
-        min="0"
-        max="100"
-        value={sliderValue}
-        onChange={handleChange}
-      />
-      <p>Selected value: {sliderValue}</p>
+    <div className={styles.sliderInput}>
+      <input className={styles.sliderInput} {...props} ref={myRef} />
+      <span className={styles.min}>{props.min}</span>
+      <span className={styles.max}>{props.max}</span>
+
+      <p>Value: {props.value}</p>
     </div>
   );
 }
 
-export default SliderInput;
+export default forwardRef((props: Props, ref) => <SliderInput {...props} myRef={ref} />);

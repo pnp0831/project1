@@ -1,12 +1,12 @@
 @import '../../../styles/variables.module.scss';
 @import '../../../styles/mixin.scss';
 
-.selectInput {
+.textInput {
   border-radius: 8px;
   height: 46px;
-  width: 350px;
+  min-width: 350px;
   font-size: $dbody-3;
-  padding: 0 16px;
+  padding: 16px;
   transition: 0.3s all ease-in;
 
   border: 1px solid $bcbcbc-color;
@@ -31,10 +31,7 @@
 
   @include mobile {
     height: 40px;
+    width: 353;
     font-size: $mbody-3;
-  }
-
-  &[error] {
-    border: 1px solid $ff0000-color;
   }
 }

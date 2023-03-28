@@ -5,14 +5,14 @@ import Image from 'next/image';
 import AutoAffix from 'react-overlays/lib/AutoAffix';
 
 type Props = {
-  initValue: number;
+  defaultValue: number;
   handleOnChange: () => {};
   classname: string;
   myRef: any;
 };
 
-const QuantityInput = memo(({ classname, handleOnChange, initValue, myRef }: Props) => {
-  const [value, setValue] = useState(initValue ?? 1);
+const QuantityInput = memo(({ classname, handleOnChange, defaultValue, myRef }: Props) => {
+  const [value, setValue] = useState(defaultValue ?? 1);
 
   const onChange = (e) => {
     let { value } = e.target;
@@ -38,7 +38,8 @@ const QuantityInput = memo(({ classname, handleOnChange, initValue, myRef }: Pro
         <label htmlFor="quanityinput" style={{ display: 'none' }} />
         <button
           className={styles.toolBar}
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             if (value > 1) {
               setValue((value) => value - 1);
 
@@ -69,10 +70,12 @@ const QuantityInput = memo(({ classname, handleOnChange, initValue, myRef }: Pro
               e.preventDefault();
             }
           }}
+          defaultValue={defaultValue}
         />
         <button
           className={styles.toolBar}
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             const tmpValue = value + 1 > 20 ? 20 : value + 1;
             onChange({
               target: {

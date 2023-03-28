@@ -14,12 +14,19 @@ const SigninForm = ({ handleSuccess }: Props) => {
   const [formValue, setFormValue] = useState({
     username: '',
     password: '',
+    rememberMe: true,
   });
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
 
     setFormValue({ ...formValue, [name]: value });
+  };
+
+  const handleOnChangeCheckbox = (e) => {
+    const { name, checked } = e.target;
+
+    setFormValue({ ...formValue, [name]: checked });
   };
 
   const handleSignIn = (e) => {
@@ -51,7 +58,11 @@ const SigninForm = ({ handleSuccess }: Props) => {
         value={formValue.password}
         onChange={handleOnChange}
       />
-      <CheckBoxInput />
+      <CheckBoxInput
+        value={formValue.rememberMe}
+        name="rememberMe"
+        onChange={handleOnChangeCheckbox}
+      />
       <Button type="submit">sign in</Button>
     </form>
   );

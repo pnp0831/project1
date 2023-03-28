@@ -1,29 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import styles from './checkbox-input.module.scss';
 import clsx from 'clsx';
 import Image from 'next/image';
 
-const CheckBoxInput = (props: any) => {
-  const [checked, setChecked] = useState(false);
-
-  const handleOnChange = (e) => {
-    setChecked(e.target.checked);
-  };
+const CheckBoxInput = ({ myRef, value, text, ...props }: any) => {
   return (
     <label className={styles.checkboxInputContainer}>
       <input
-        type="checkbox"
         className={clsx(styles.checkboxInput, props.className)}
         {...props}
-        checked={checked}
-        onChange={handleOnChange}
+        type="checkbox"
+        checked={value}
+        ref={myRef}
       />
       <span className={styles.checkmark}>
         <Image src="/check.png" height={24} width={24} alt="check" />
       </span>
-      <span className="body3">{props.text ?? 'Remember me'}</span>
+      <span className="body3">{text ?? 'Remember me'}</span>
     </label>
   );
 };
 
-export default CheckBoxInput;
+export default forwardRef((props: Props, ref) => <CheckBoxInput {...props} myRef={ref} />);

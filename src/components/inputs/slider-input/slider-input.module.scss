@@ -2,14 +2,31 @@
 @import '../../../styles/mixin.scss';
 
 .sliderInput {
-  // border-radius: 8px;
+  border-radius: 8px;
   height: 46px;
-  // min-width: 350px;
-  // font-size: $dbody-3;
-  // padding: 16px;
-  // transition: 0.3s all ease-in;
+  min-width: 350px;
+  font-size: $dbody-3;
+  transition: 0.3s all ease-in;
+  position: relative;
+  margin-bottom: 30px;
 
-  // border: 1px solid $bcbcbc-color;
+
+  .min,
+  .max {
+    position: absolute;
+    bottom: -10px
+  }
+
+  .min {
+    left: -20px;
+
+  }
+
+  .max {
+    right: -20px;
+
+  }
+
 
 
   // &:hover {
