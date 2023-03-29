@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { APP_ROUTE } from '~/constants';
+import { formatter } from '~/helpers';
 import styles from './product-item.module.scss';
 
 type Props = {
@@ -24,7 +25,7 @@ const ProductItem = ({ product, empty }: Props) => {
           </div>
 
           <h6>{product.name}</h6>
-          <div className={clsx('body2', styles.productName)}>{product.name}</div>
+          <div className={clsx('body2', styles.productName)}>{formatter.format(product.price)}</div>
         </Link>
       )}
     </div>

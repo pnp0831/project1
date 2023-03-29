@@ -57,7 +57,7 @@ const Cart = ({ product }: Props) => {
                   {!windowType.isMobile && (
                     <div className={styles.cartToolbar}>
                       <QuantityInput
-                        initValue={count}
+                        defaultValue={count}
                         handleOnChange={(value) => {
                           handleOnChange(item.id, value);
                         }}

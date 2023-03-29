@@ -19,6 +19,8 @@ import { useAuthContext } from '~/contexts/AuthContext';
 import useWindowSize from '~/hooks/useWindowResize';
 
 const LandingPageHeader = memo(() => {
+  const router = useRouter();
+
   const handleClickItem = (item) => {
     if (item.url) {
       return null;
@@ -37,6 +39,11 @@ const LandingPageHeader = memo(() => {
     if (isTablet && className) {
       className = `t-${className}`;
     }
+    const isActive = router.pathname === item.url;
+
+    if (isActive) {
+      className = `${className} active`;
+    }
 
     return (
       <li key={item.name} onClick={() => handleClickItem(item)} className={className}>
@@ -52,6 +59,7 @@ const LandingPageHeader = memo(() => {
       </li>
     );
   };
+
   return (
     <>
       <menu className={styles.mainMenu}>
