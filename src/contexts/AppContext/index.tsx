@@ -1,3 +1,4 @@
+import { SessionProvider } from 'next-auth/react';
 import React, { ReactNode, useContext, useState } from 'react';
 
 interface IApp {
@@ -20,8 +21,10 @@ export const AppContextProvider = ({ children }: Props) => {
   const [title, setTitle] = useState();
 
   return (
-    <AppContext.Provider value={{ headers, setHeaders, setTitle, title }}>
-      {children}
-    </AppContext.Provider>
+    <SessionProvider>
+      <AppContext.Provider value={{ headers, setHeaders, setTitle, title }}>
+        {children}
+      </AppContext.Provider>
+    </SessionProvider>
   );
 };

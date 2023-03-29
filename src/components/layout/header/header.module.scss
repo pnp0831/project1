@@ -101,6 +101,10 @@
   position: relative;
   display: inline-block;
 
+  &>div {
+    width: max-content;
+  }
+
   .dropDownUserContent {
     display: none;
     position: absolute;

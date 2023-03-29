@@ -33,7 +33,8 @@ const SigninForm = ({ handleSuccess }: Props) => {
     e.preventDefault();
 
     const user = {
-      name: formValue.username,
+      username: formValue.username,
+      password: formValue.password,
     };
 
     signin(user);
@@ -63,7 +64,9 @@ const SigninForm = ({ handleSuccess }: Props) => {
         name="rememberMe"
         onChange={handleOnChangeCheckbox}
       />
-      <Button type="submit">sign in</Button>
+      <Button type="submit" disabled={!formValue.password && !formValue.username}>
+        sign in
+      </Button>
     </form>
   );
 };

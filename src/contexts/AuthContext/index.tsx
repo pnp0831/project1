@@ -1,7 +1,10 @@
 import React, { ReactNode, useContext, useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
 
 interface IUser {
-  name?: string;
+  username?: string;
+  password?: string;
 }
 
 interface UserContextType {
@@ -18,16 +21,22 @@ const AuthContext = React.createContext<UserContextType | null>(null);
 export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthContextProvider = ({ children }: Props) => {
-  const [user, setUser] = useState<IUser>({
-    name: '',
-  });
+  const { data: session, status } = useSession();
 
-  const signin = (user: IUser) => {
-    setUser(user);
+  console.log('session', session);
+
+  const { user = {} } = session || {};
+
+  const signin = async (info: IUser) => {
+    console.log({ info });
+    signIn('credentials', {
+      ...info,
+      redirect: false,
+    });
   };
 
   const signout = () => {
-    setUser({});
+    signOut({ redirect: false });
   };
 
   return <AuthContext.Provider value={{ user, signin, signout }}>{children}</AuthContext.Provider>;

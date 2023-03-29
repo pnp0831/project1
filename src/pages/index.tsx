@@ -9,7 +9,6 @@ import ScrollSpy from '~/components/landing-page/scrollspy';
 import SectionTitle from '~/components/landing-page/section-title';
 import ScrollToTop from '~/components/scroll-to-top';
 import { MAIN_MENU } from '~/constants';
-import { faker } from '@faker-js/faker';
 import kebabCase from 'lodash/kebabCase';
 
 export default function LandingPage() {
