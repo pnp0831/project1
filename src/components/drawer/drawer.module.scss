@@ -119,6 +119,24 @@
     height: 23px;
     display: flex;
     align-items: center;
+
+    >span {
+      width: max-content;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      -webkit-line-clamp: 1;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+
+      @include mobile {
+        max-width: 100px;
+      }
+
+      @include tablet {
+        max-width: 180px;
+      }
+    }
   }
 }
 
