@@ -38,12 +38,12 @@ const SigninForm = ({ handleSuccess }: Props) => {
       password: formValue.password,
     };
 
-    // signin(user);
+    signin(user);
 
-    fetch(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/auth/callback/credentials?`, {
-      method: 'POST',
-      body: JSON.stringify(user),
-    });
+    // fetch(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/auth/callback/credentials?`, {
+    //   method: 'POST',
+    //   body: JSON.stringify(user),
+    // });
 
     if (handleSuccess) {
       handleSuccess(user);
