@@ -41,13 +41,12 @@
     }
 
     &.isEndTransition {
-      top: 120%
+      top: 120%;
     }
 
     @include tablet {
       min-width: 824px;
     }
-
 
     @include mobile {
       width: calc(100% - 20px);

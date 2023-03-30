@@ -1,7 +1,6 @@
 @import '../../../styles/variables.module.scss';
 @import '../../../styles/mixin.scss';
 
-
 .hobbies {
   @include mobile {
     padding-bottom: 30px;
@@ -40,7 +39,6 @@
         height: 150px;
       }
 
-
       &:not(:last-child) {
         margin-right: 25px;
       }
@@ -52,11 +50,9 @@
 
         .overlay {
           opacity: 0.85;
-
         }
 
         h5 {
-
           transform: translate(-50%, -50%) scale(1);
         }
       }
@@ -75,9 +71,7 @@
           width: 220px;
           height: 150px;
         }
-
       }
-
 
       h5 {
         width: 100%;
@@ -89,7 +83,6 @@
         display: none;
         display: flex;
 
-
         height: 100%;
         top: 50%;
         left: 50%;
@@ -99,8 +92,6 @@
         z-index: 2;
 
         transition: all 0.3s ease-out;
-
-
       }
 
       .overlay {
@@ -117,5 +108,4 @@
       }
     }
   }
-
 }

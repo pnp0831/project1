@@ -1,7 +1,6 @@
 @import '../../../styles/variables.module.scss';
 @import '../../../styles/mixin.scss';
 
-
 .experience {
   padding-bottom: 50px;
 
@@ -29,19 +28,16 @@
         padding: 10px 20px;
       }
 
-
       li {
         border-left: 1px solid $primary-color;
         position: relative;
         padding-left: 45px;
         padding-bottom: 30px;
 
-
         @include mobile {
           padding-left: 20px;
           padding-bottom: 20px;
         }
-
 
         &:nth-child(3) {
           padding-bottom: 0;
@@ -50,13 +46,11 @@
         &:last-child {
           border: 1px solid transparent;
 
-
           @include mobile {
             &::before {
-              top: -1px
+              top: -1px;
             }
           }
-
         }
 
         &:before {
@@ -89,21 +83,13 @@
 
           @include mobile {
             height: 16px;
-
           }
         }
 
         desc {
-          color: #4F4F4F;
+          color: #4f4f4f;
         }
       }
-
-
     }
-
   }
-
-
-
-
 }

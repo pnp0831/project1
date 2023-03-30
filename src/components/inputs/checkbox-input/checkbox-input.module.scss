@@ -1,7 +1,6 @@
 @import '../../../styles/variables.module.scss';
 @import '../../../styles/mixin.scss';
 
-
 .checkboxInputContainer {
   display: block;
   position: relative;
@@ -18,7 +17,6 @@
   -ms-user-select: none;
   user-select: none;
   width: 550px;
-
 
   span {
     &:last-child {
@@ -40,7 +38,7 @@
     display: none;
 
     &:checked {
-      &~.checkmark {
+      & ~ .checkmark {
         background-color: $primary-color;
         display: flex;
         align-items: center;
@@ -74,7 +72,6 @@
   img {
     display: none;
   }
-
 
   @include tablet-mobile {
     top: 50%;

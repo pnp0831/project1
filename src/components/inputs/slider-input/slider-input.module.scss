@@ -10,24 +10,19 @@
   position: relative;
   margin-bottom: 30px;
 
-
   .min,
   .max {
     position: absolute;
-    bottom: -10px
+    bottom: -10px;
   }
 
   .min {
     left: -20px;
-
   }
 
   .max {
     right: -20px;
-
   }
-
-
 
   // &:hover {
   //   border: 1px solid $primary-color;
@@ -40,7 +35,6 @@
   // &:focus {
   //   border: 1px solid $primary-color;
   // }
-
 
   // @include tablet {
   //   font-size: $tbody-3;

@@ -1,8 +1,6 @@
 @import '../../../styles/variables.module.scss';
 @import '../../../styles/mixin.scss';
 
-
-
 .drawerContainer {
   position: fixed;
   top: 0;
@@ -21,9 +19,7 @@
     cursor: pointer;
   }
 
-
   li {
-
     a h6,
     nav h6 {
       transition: all 0.3s ease-out;
@@ -37,7 +33,6 @@
       }
     }
   }
-
 
   .content {
     padding: 25px 10px;
@@ -64,17 +59,15 @@
       display: flex;
       flex-direction: column;
 
-
-      >div {
+      > div {
         text-align: center;
       }
-
 
       ul li:not(:last-child) {
         margin-bottom: 20px;
       }
 
-      >ul {
+      > ul {
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -91,8 +84,6 @@
             width: 24px;
             height: 24px;
           }
-
-
         }
 
         .shoppingCart {
@@ -106,14 +97,12 @@
           }
 
           @include mobile {
-
             span {
               right: -5px;
             }
           }
         }
       }
-
     }
   }
 
@@ -123,7 +112,7 @@
     display: flex;
     align-items: center;
 
-    >span {
+    > span {
       width: max-content;
       overflow: hidden;
       text-overflow: ellipsis;

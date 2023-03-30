@@ -26,12 +26,11 @@
     height: auto;
     padding: 20px;
 
-    >h4 {
+    > h4 {
       text-transform: uppercase;
       height: 40px;
       display: flex;
       align-items: center;
-
     }
 
     @include mobile {
@@ -49,7 +48,6 @@
       }
     }
 
-
     &.cartsFull {
       height: max-content;
 
@@ -58,13 +56,12 @@
       }
     }
 
-    >button {
+    > button {
       margin-top: 20px;
 
       @include mobile {
         margin-top: 10px;
       }
-
     }
 
     .cart {
@@ -73,7 +70,6 @@
       width: 100%;
       padding: 10px;
       background: $secondary-color;
-
 
       @include mobile {
         padding: 0;
@@ -118,12 +114,8 @@
               color: $bcbcbc-color;
             }
           }
-
-
         }
       }
-
-
     }
 
     .cartToolbar {
@@ -192,13 +184,11 @@
     flex-direction: column;
     height: max-content;
 
-
     .infomation {
       height: 34px;
       display: flex;
       align-items: center;
     }
-
 
     @include tablet {
       margin: auto;
@@ -245,7 +235,6 @@
       @include mobile {
         height: 19px;
       }
-
     }
 
     .subInfoButton {
@@ -253,6 +242,5 @@
         text-align: center;
       }
     }
-
   }
 }

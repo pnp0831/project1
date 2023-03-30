@@ -1,7 +1,6 @@
 @import '../../../styles/variables.module.scss';
 @import '../../../styles/mixin.scss';
 
-
 .wrapperBreadcrumb {
   margin-top: 100px;
   background: $fafafa-color;
@@ -29,7 +28,7 @@
         }
 
         &.active h6 {
-          color: $primary-color
+          color: $primary-color;
         }
 
         h6 {
@@ -39,16 +38,12 @@
         &:not(.devider) h6 {
           cursor: pointer;
         }
-
       }
 
       .devider,
       li h6 {
-        color: $bcbcbc-color
+        color: $bcbcbc-color;
       }
-
     }
   }
-
-
 }

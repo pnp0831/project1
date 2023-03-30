@@ -10,7 +10,6 @@ import { useFormContext } from '~/contexts/FormContext';
 import guesserInput from '../../helpers/guessInput';
 import useFieldValue from '~/hooks/useField';
 import useInput from '~/hooks/useInput';
-import { SelectArrayInput } from 'react-admin';
 import Button from '../button';
 import Form from './form';
 import JSONViewer from 'react-json-viewer';

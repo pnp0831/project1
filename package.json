@@ -9,7 +9,7 @@
     "start:pro": "next build && next start",
     "lint": "next lint",
     "analyze": "SET ANALYZE=true next build",
-    "prettier:format": "npm run prettier --write src/**/*{.js,.jsx,.tsx,.ts}"
+    "prettier:format": "npm run prettier --write src/**/*{.tsx,.ts}"
   },
   "dependencies": {
     "@faker-js/faker": "^7.6.0",

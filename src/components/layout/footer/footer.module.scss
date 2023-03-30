@@ -1,8 +1,6 @@
 @import '../../../styles/variables.module.scss';
 @import '../../../styles/mixin.scss';
 
-
-
 .footer {
   border-top: 1px solid $de3e4e-color;
 
@@ -17,9 +15,8 @@
       padding: 10px 0;
     }
 
-
     height: 100%;
-    padding: 20px 0
+    padding: 20px 0;
   }
 
   .copyright {
@@ -29,5 +26,4 @@
     font-weight: bold;
     margin-top: 5px;
   }
-
 }

@@ -29,7 +29,6 @@
     }
 
     &:hover div {
-
       &.imgPrev,
       &.imgNext {
         background: url('/chevron-left.png') center center no-repeat;
@@ -39,7 +38,6 @@
       &.imgFirst {
         background: url('/chevrons-left.png') center center no-repeat;
       }
-
     }
 
     div {
@@ -59,14 +57,10 @@
         background: url('/chevrons-left-d.png') center center no-repeat;
       }
 
-
       &.imgNext,
       &.imgLast {
         transform: rotate(180deg);
       }
-
-
-
     }
 
     &.disabled {
@@ -76,7 +70,7 @@
     &.active,
     &:hover {
       color: $primary-color;
-      border: 1px solid $primary-color
+      border: 1px solid $primary-color;
     }
 
     &:not(:last-child) {
@@ -85,8 +79,6 @@
       @include mobile {
         margin-right: 10px;
       }
-
     }
-
   }
 }

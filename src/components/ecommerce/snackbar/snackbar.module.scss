@@ -15,17 +15,14 @@
     width: 600px;
   }
 
-
   @include mobile {
     width: 373px;
   }
-
 
   .snackbar {
     position: relative;
     color: $secondary-color;
     height: 80px;
-
 
     .overlay {
       opacity: 0.8;
@@ -39,7 +36,6 @@
     }
 
     .snackbarContent {
-
       .snackBarButton {
         height: 30px;
         display: flex;
@@ -53,7 +49,6 @@
           margin-right: 6px;
           margin-top: 6px;
         }
-
       }
 
       .snackbarMessage {
@@ -68,5 +63,4 @@
       }
     }
   }
-
 }

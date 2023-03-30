@@ -5,7 +5,7 @@
   width: 100%;
 
   @include tablet {
-    width: calc(100% - 100px)
+    width: calc(100% - 100px);
   }
 
   @include mobile {
@@ -19,5 +19,4 @@
   @media (min-width: 1920px) {
     max-width: 1680px;
   }
-
 }

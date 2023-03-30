@@ -1,7 +1,6 @@
 @import '../../../styles/variables.module.scss';
 @import '../../../styles/mixin.scss';
 
-
 .modalForm {
   display: flex;
   flex-direction: column;
@@ -22,7 +21,6 @@
       align-items: center;
     }
   }
-
 
   @include tablet {
     padding: 10px 0;

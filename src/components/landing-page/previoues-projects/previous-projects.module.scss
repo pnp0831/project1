@@ -1,11 +1,9 @@
 @import '../../../styles/variables.module.scss';
 @import '../../../styles/mixin.scss';
 
-
-
-$dwidth:444px;
-$twidth:280px;
-$mwidth:220px;
+$dwidth: 444px;
+$twidth: 280px;
+$mwidth: 220px;
 
 .previousProjects {
   display: flex;
@@ -23,7 +21,6 @@ $mwidth:220px;
     margin-bottom: 30px;
   }
 
-
   .workItem {
     width: $dwidth;
     height: $dwidth;
@@ -37,7 +34,6 @@ $mwidth:220px;
     }
 
     @include mobile {
-
       &:not(:last-child) {
         margin-bottom: 10px;
       }
@@ -50,14 +46,10 @@ $mwidth:220px;
     }
 
     img {
-
       @include tablet-mobile {
-
         width: $twidth;
         height: $twidth;
       }
-
-
     }
 
     @include desktop {
@@ -93,7 +85,6 @@ $mwidth:220px;
       justify-content: center;
       align-items: flex-end;
 
-
       button {
         background: none;
         cursor: pointer;
@@ -104,7 +95,6 @@ $mwidth:220px;
 
         @include mobile {
           color: $primary-color;
-
         }
       }
 
@@ -120,7 +110,6 @@ $mwidth:220px;
       height: 218px;
       text-align: center;
       padding: 0 60px;
-
 
       div {
         margin: 20px 0;

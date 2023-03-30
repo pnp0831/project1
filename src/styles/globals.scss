@@ -2,14 +2,11 @@
 @import './mixin.scss';
 @import './reset.scss';
 
-
 body {
   margin: 0;
   scroll-behavior: smooth;
   font-family: 'Roboto', sans-serif;
-
 }
-
 
 h1 {
   font-size: $dheading-h1;
@@ -21,7 +18,6 @@ h1 {
   @include mobile {
     font-size: $mheading-h1;
   }
-
 }
 
 h2 {
@@ -34,7 +30,6 @@ h2 {
   @include mobile {
     font-size: $mheading-h2;
   }
-
 }
 
 h3 {
@@ -47,7 +42,6 @@ h3 {
   @include mobile {
     font-size: $mheading-h3;
   }
-
 }
 
 h4 {
@@ -60,7 +54,6 @@ h4 {
   @include mobile {
     font-size: $mheading-h4;
   }
-
 }
 
 h5 {
@@ -73,7 +66,6 @@ h5 {
   @include mobile {
     font-size: $mheading-h5;
   }
-
 }
 
 h6 {
@@ -86,7 +78,6 @@ h6 {
   @include mobile {
     font-size: $mheading-h6;
   }
-
 }
 
 .body1 {
@@ -142,30 +133,25 @@ h6 {
 
   @include tablet {
     font-size: $tbody-5;
-
   }
 
   @include mobile {
     font-size: $mbody-5;
-
   }
 }
 
 .even {
-  background: #F8F9FA;
+  background: #f8f9fa;
 }
-
 
 a:visited,
 a h6 {
-  color: initial
+  color: initial;
 }
 
 ul li.active h6 {
   font-weight: bold !important;
 }
-
-
 
 input::-webkit-input-placeholder,
 input::-moz-placeholder,
@@ -174,12 +160,10 @@ input::placeholder {
   color: $bcbcbc-color;
 }
 
-
 input:focus::-webkit-input-placeholder,
 input:hover::-webkit-input-placeholder {
-  color: $primary-color
+  color: $primary-color;
 }
-
 
 .mb-20 {
   margin-bottom: 20px;
