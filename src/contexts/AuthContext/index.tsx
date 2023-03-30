@@ -23,12 +23,9 @@ export const useAuthContext = () => useContext(AuthContext);
 export const AuthContextProvider = ({ children }: Props) => {
   const { data: session, status } = useSession();
 
-  console.log('session', session);
-
   const { user = {} } = session || {};
 
   const signin = async (info: IUser) => {
-    console.log({ info });
     signIn('credentials', {
       ...info,
       redirect: false,

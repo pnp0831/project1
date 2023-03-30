@@ -1,3 +1,4 @@
+import { signIn } from 'next-auth/react';
 import React, { useState } from 'react';
 import Button from '~/components/button';
 import CheckBoxInput from '~/components/inputs/checkbox-input';
@@ -67,6 +68,7 @@ const SigninForm = ({ handleSuccess }: Props) => {
       <Button type="submit" disabled={!formValue.password && !formValue.username}>
         sign in
       </Button>
+      <Button onClick={() => signIn('google')}>sign in with google</Button>
     </form>
   );
 };

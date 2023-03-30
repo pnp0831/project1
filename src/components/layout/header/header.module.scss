@@ -103,6 +103,9 @@
 
   &>div {
     width: max-content;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .dropDownUserContent {
