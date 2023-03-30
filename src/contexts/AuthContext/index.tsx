@@ -26,6 +26,7 @@ export const AuthContextProvider = ({ children }: Props) => {
   const { user = {} } = session || {};
 
   const signin = async (info: IUser) => {
+    console.log('info');
     signIn('credentials', {
       ...info,
       redirect: false,
