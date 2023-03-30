@@ -7,12 +7,7 @@ import GoogleProvider from 'next-auth/providers/google';
 
 export default NextAuth({
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    }),
     CredentialsProvider({
-      id: process.env.NEXTAUTH_SECRET,
       // The name to display on the sign in form (e.g. "Sign in with...")
       name: 'Credentials',
       // `credentials` is used to generate a form on the sign in page.
@@ -36,9 +31,6 @@ export default NextAuth({
       },
     }),
   ],
-  cookie: {
-    domain: '.vercel.app',
-  },
   cookies: {
     domain: '.vercel.app',
   },
