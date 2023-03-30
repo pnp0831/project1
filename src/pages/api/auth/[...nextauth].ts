@@ -39,6 +39,9 @@ export default NextAuth({
   cookie: {
     domain: '.vercel.app',
   },
+  cookies: {
+    domain: '.vercel.app',
+  },
   callbacks: {
     async signIn({ user, account, profile }) {
       return true;
