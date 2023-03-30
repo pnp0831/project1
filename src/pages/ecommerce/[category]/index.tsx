@@ -39,10 +39,6 @@ const ProductList = ({ products = [], total }) => {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { category, page = 1 } = context.query;
 
-  // const url = `${API_GET_PRODUCT_LIST(page, category)}`;
-
-  // const products = await request.get(url);
-
   const products = PRODUCTS.filter((item) => item.category === category);
   const total = products.length;
   const productsRender = products.slice((page - 1) * LIMIT, page * LIMIT);
@@ -80,13 +76,18 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 // export async function getStaticProps(context) {
 //   const { params } = context;
 
-//   // const products = await request.get(API_GET_PRODUCT_LIST(1, params.category));
+//   console.log('context', context);
 
 //   const products = PRODUCTS.filter((item) => item.category === params.category);
+
+//   const total = products.length;
+
+//   // const productsRender = products.slice((page - 1) * LIMIT, page * LIMIT);
 
 //   return {
 //     props: {
 //       products,
+//       // total,
 //     },
 //   };
 // }
