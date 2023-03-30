@@ -1,19 +1,12 @@
-import React, { Fragment, memo, useEffect, useState, useRef, useMemo, useCallback } from 'react';
-import PropTypes from 'prop-types';
-import TextInput from '../inputs/text-input';
-import QuantityInput from '../inputs/quantity-input';
-import CheckBoxInput from '../inputs/checkbox-input';
-import SelectInput from '../inputs/select-input';
-import SliderInput from '../inputs/slider-input';
-import JSON_DATA from './json';
+import React, { memo, useEffect, useMemo, useState } from 'react';
+import JSONViewer from 'react-json-viewer';
 import { useFormContext } from '~/contexts/FormContext';
-import guesserInput from '../../helpers/guessInput';
-import useFieldValue from '~/hooks/useField';
+import guesserInput from '~/helpers/guessInput';
 import useInput from '~/hooks/useInput';
+import useInterval from '~/hooks/useInterval';
 import Button from '../button';
 import Form from './form';
-import JSONViewer from 'react-json-viewer';
-import useInterval from '~/hooks/useInterval';
+import JSON_DATA from './json';
 
 interface Properties {
   required?: boolean;
