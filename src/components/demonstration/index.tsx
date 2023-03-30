@@ -5,7 +5,7 @@ import guesserInput from '~/helpers/guessInput';
 import useInput from '~/hooks/useInput';
 import useInterval from '~/hooks/useInterval';
 import Button from '../button';
-import Form from './form';
+import FormCom from './Form';
 import JSON_DATA from './json';
 
 interface Properties {
@@ -115,39 +115,40 @@ const Demonstration = (props) => {
 
   const jsonData = JSON_DATA['joist'];
 
-  return 'ss';
-  // <Form onSubmit={handleOnSubmit}>
-  //   <div
-  //     style={{
-  //       padding: '50px',
-  //       display: 'flex',
-  //       justifyContent: 'space-between',
-  //     }}
-  //   >
-  //     <div style={{ marginTop: '50px' }}>
-  //       <div
-  //         style={{
-  //           display: 'flex',
-  //           justifyContent: 'space-between',
-  //           alignItems: 'flex-start',
-  //         }}
-  //       >
-  //         <div>
-  //           {Object.values(jsonData).map((item, index) => {
-  //             const id = Object.keys(jsonData)[index];
-  //             return (
-  //               <div style={{ margin: '10px' }} key={id}>
-  //                 <GuessInputComponent {...item} name={item.name} id={id} />
-  //               </div>
-  //             );
-  //           })}
-  //           <Button type="submit">Submit</Button>
-  //         </div>
-  //         <JSONViewComponent />
-  //       </div>
-  //     </div>
-  //   </div>
-  // </Form>
+  return (
+    <FormCom onSubmit={handleOnSubmit}>
+      <div
+        style={{
+          padding: '50px',
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}
+      >
+        <div style={{ marginTop: '50px' }}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'flex-start',
+            }}
+          >
+            <div>
+              {Object.values(jsonData).map((item, index) => {
+                const id = Object.keys(jsonData)[index];
+                return (
+                  <div style={{ margin: '10px' }} key={id}>
+                    <GuessInputComponent {...item} name={item.name} id={id} />
+                  </div>
+                );
+              })}
+              <Button type="submit">Submit</Button>
+            </div>
+            <JSONViewComponent />
+          </div>
+        </div>
+      </div>
+    </FormCom>
+  );
 };
 
 export default Demonstration;
