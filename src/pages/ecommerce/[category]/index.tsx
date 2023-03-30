@@ -39,9 +39,18 @@ const ProductList = ({ products = [], total }) => {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { category, page = 1 } = context.query;
 
+  const categoryId = CATEGORIES.filter((i) => i.slug === category)?.[0];
+
+  if (!categoryId) {
+    return {
+      notFound: true,
+    };
+  }
+
   const products = PRODUCTS.filter((item) => item.category === category);
   const total = products.length;
   const productsRender = products.slice((page - 1) * LIMIT, page * LIMIT);
+
   return {
     props: {
       products: productsRender,

@@ -3,7 +3,7 @@ const path = require('path');
 /**
  * @type {import('next').NextConfig}
  */
-const nextConfig = {
+let nextConfig = {
   /* config options here */
   reactStrictMode: false,
   typescript: {

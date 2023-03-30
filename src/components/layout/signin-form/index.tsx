@@ -38,7 +38,12 @@ const SigninForm = ({ handleSuccess }: Props) => {
       password: formValue.password,
     };
 
-    signin(user);
+    // signin(user);
+
+    fetch(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/auth/callback/credentials?`, {
+      method: 'POST',
+      body: JSON.stringify(user),
+    });
 
     if (handleSuccess) {
       handleSuccess(user);
@@ -68,7 +73,7 @@ const SigninForm = ({ handleSuccess }: Props) => {
       <Button type="submit" disabled={!formValue.password && !formValue.username}>
         sign in
       </Button>
-      {/* <Button onClick={() => signIn('google')}>sign in with google</Button> */}
+      <Button onClick={() => signIn('google')}>sign in with google</Button>
     </form>
   );
 };
