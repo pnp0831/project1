@@ -30,7 +30,7 @@ export const AuthContextProvider = ({ children }: Props) => {
     signIn('credentials', {
       ...info,
       email: info.username,
-      redirect: true,
+      redirect: false,
     });
   };
 
