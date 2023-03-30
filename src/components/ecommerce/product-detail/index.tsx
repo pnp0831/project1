@@ -7,7 +7,7 @@ import Container from '~/components/container';
 import QuantityInput from '~/components/inputs/quantity-input';
 import { useCartContext } from '~/contexts/CartContext';
 import { useSnackbarContext } from '~/contexts/SnackbarContext';
-import { formatter } from '~/helpers';
+import { formatter, onImageError } from '~/helpers';
 import useWindowSize from '~/hooks/useWindowResize';
 import Snackbar from '../snackbar';
 import styles from './product-detail.module.scss';
@@ -55,16 +55,17 @@ const ProductDetail = ({ product }: Props) => {
         <div className={styles.image}>
           <picture>
             {' '}
-            <img alt={product.name} loading="lazy" src={product.image} />
+            <img alt={product.name} loading="lazy" src={product.image} onError={onImageError} />
           </picture>
         </div>
-        {windowType.isMobile ? (
+        {components}
+        {/* {windowType.isMobile ? (
           components
         ) : (
           <AutoAffix offsetTop={110} container={refContainer} width={width}>
             {components}
           </AutoAffix>
-        )}
+        )} */}
       </section>
     </Container>
   );

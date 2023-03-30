@@ -3,37 +3,33 @@
 
 .productDetail {
   padding: 50px 0;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
 
   @include mobile {
     padding: 10px 0;
-    justify-self: unset;
-    flex-direction: column;
+    grid-template-columns: unset;
+    row-gap: 10px;
   }
 
-  .image {
-    margin-right: 20px;
+  @include tablet {
+    column-gap: 30px;
+    grid-template-columns: 400px auto;
+  }
 
-    @include tablet {
-      margin-right: 30px;
-    }
+
+  .image {
+
 
     @include mobile {
-      margin: 0;
-      text-align: center;
       padding: 10px;
+      margin: auto;
     }
 
     img {
       object-fit: cover;
-      width: 830px;
-      height: 1000px;
-
-      @include tablet {
-        width: 400px;
-        height: 450px;
-      }
+      width: 100%;
 
       @include mobile {
         width: 250px;
@@ -45,10 +41,6 @@
   .info {
     width: 100%;
     padding: 0 10px;
-
-    @include mobile {
-      margin-top: 10px;
-    }
 
     h5 {
       height: 33px;
@@ -64,6 +56,7 @@
       height: 38px;
       display: flex;
       align-items: center;
+      text-transform: capitalize;
 
       @include tablet {
         height: 35px;

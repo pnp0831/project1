@@ -3,30 +3,28 @@
 
 .container {
   padding-top: 50px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 66.6666% auto;
+  column-gap: 20px;
 
   @include tablet {
-    flex-direction: column;
+    grid-template-columns: unset;
+    column-gap: 0;
+    row-gap: 30px;
     padding-bottom: 50px;
   }
 
   @include mobile {
-    flex-direction: column;
-    padding: 20px 0;
+    grid-template-columns: unset;
+    column-gap: 0;
+    row-gap: 10px;
+    padding: 10px 0;
   }
 
   .carts {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     background: $fafafa-color;
     height: auto;
     padding: 20px;
-
-    flex-basis: 66.666%;
-    margin-right: 20px;
 
     >h4 {
       text-transform: uppercase;
@@ -36,31 +34,24 @@
 
     }
 
-    @include tablet {
-      margin: 0;
-      // height: 282px;
-      flex-basis: unset;
-    }
-
-
     @include mobile {
-      margin: 0;
-      height: 100%;
       padding: 10px;
-      flex-basis: unset;
     }
 
     &.cartsEmpty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
       @include tablet {
         height: 282px;
       }
     }
 
 
-
     &.cartsFull {
-      // flex-direction: row;
-      // justify-content: unset;
+      height: max-content;
 
       @include mobile {
         flex-direction: column;
@@ -195,33 +186,33 @@
   }
 
   .info {
-    padding: 20px 20px 10px 20px;
+    padding: 10px 20px 10px 20px;
     border: 1px solid $de3e4e-color;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    flex-basis: 33.333%;
+    height: max-content;
+
+
+    .infomation {
+      height: 34px;
+      display: flex;
+      align-items: center;
+    }
 
 
     @include tablet {
-      margin: 36px auto auto auto;
+      margin: auto;
       width: 540px;
-      flex-basis: unset;
-
-      button {
-        align-self: center;
-      }
     }
 
     @include mobile {
-      margin: 10px 10px 0px 10px;
+      margin: 0 10px;
     }
 
     .divider {
       border-bottom: 1px solid $de3e4e-color;
       margin: 10px 0;
     }
-
 
     .subInfo {
       display: flex;
@@ -258,7 +249,7 @@
     }
 
     .subInfoButton {
-      @include mobile {
+      @include tablet-mobile {
         text-align: center;
       }
     }

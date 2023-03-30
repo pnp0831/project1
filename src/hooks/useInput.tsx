@@ -12,7 +12,6 @@ const useInput = ({
   required,
   options,
   type,
-  text,
   ...rest
 }) => {
   const {

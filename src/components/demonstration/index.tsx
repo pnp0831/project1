@@ -7,12 +7,12 @@ import SelectInput from '../inputs/select-input';
 import SliderInput from '../inputs/slider-input';
 import JSON_DATA from './json';
 import { useFormContext } from '~/contexts/FormContext';
-import guesserInput from './guessInput';
-import useFieldValue from '~/components/demonstration/useField';
-import useInput from '~/components/demonstration//useInput';
+import guesserInput from '../../helpers/guessInput';
+import useFieldValue from '~/hooks/useField';
+import useInput from '~/hooks/useInput';
 import { SelectArrayInput } from 'react-admin';
 import Button from '../button';
-import Form from './Form';
+import Form from './form';
 import JSONViewer from 'react-json-viewer';
 import useInterval from '~/hooks/useInterval';
 
@@ -88,10 +88,14 @@ const GuessInputComponent = memo((props: InputProps) => {
   if (!InputComponent) {
     return null;
   }
+  const { required } = guessedProps;
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
-      <span style={{ width: '200px' }}>{props.name}:</span>
+      <span style={{ width: '200px' }}>
+        {props.name}
+        {required && <span style={{ color: 'red' }}>*</span>}:
+      </span>
 
       <WrapperInput name={props.name} {...guessedProps} id={props.id}>
         <InputComponent />
@@ -113,16 +117,11 @@ const JSONViewComponent = () => {
 };
 
 const Demonstration = (props) => {
-  const [isJoist, setIsJoist] = useState(true);
-  const [jsonData, setJsonData] = useState({});
-
-  useEffect(() => {
-    setJsonData(JSON_DATA[isJoist ? 'joist' : 'truss']);
-  }, [isJoist]);
-
-  const handleOnSubmit = (e, formValue) => {
-    console.log('e', formValue);
+  const handleOnSubmit = (formValue) => {
+    console.log(formValue);
   };
+
+  const jsonData = JSON_DATA['joist'];
 
   return (
     <Form onSubmit={handleOnSubmit}>
@@ -134,24 +133,6 @@ const Demonstration = (props) => {
         }}
       >
         <div style={{ marginTop: '50px' }}>
-          <div style={{ display: 'flex' }}>
-            <div
-              style={{
-                padding: '50px',
-                textAlign: 'center',
-                border: `${isJoist ? 5 : 1}px solid black`,
-                cursor: 'pointer',
-                width: '200px',
-                marginRight: '10px',
-              }}
-              onClick={() => {
-                setIsJoist(true);
-              }}
-            >
-              Joist
-            </div>
-          </div>
-
           <div
             style={{
               display: 'flex',

@@ -6,7 +6,7 @@ import Container from '~/components/container';
 import styles from './header.module.scss';
 import drawerStyles from '~/components/drawer/drawer.module.scss';
 import Link from 'next/link';
-import Drawer from '~/components/drawer';
+import Drawer from '~/components/layout/drawer';
 import { useRouter } from 'next/router';
 import clsx from 'clsx';
 import { useCartContext } from '~/contexts/CartContext';
@@ -22,6 +22,10 @@ const LandingPageHeader = memo(() => {
   const router = useRouter();
 
   const handleClickItem = (item) => {
+    if (typeof func === 'function') {
+      func();
+    }
+
     if (item.url) {
       return null;
     }
@@ -34,7 +38,7 @@ const LandingPageHeader = memo(() => {
     });
   };
 
-  const renderItem = (item, isTablet) => {
+  const renderItem = (item, isTablet, func) => {
     let className = item.id ? `menu-${item.id}` : null;
     if (isTablet && className) {
       className = `t-${className}`;
@@ -46,7 +50,7 @@ const LandingPageHeader = memo(() => {
     }
 
     return (
-      <li key={item.name} onClick={() => handleClickItem(item)} className={className}>
+      <li key={item.name} onClick={() => handleClickItem(item, func)} className={className}>
         {item.url ? (
           <Link href={item.url}>
             <h6>{item.name}</h6>
@@ -66,10 +70,10 @@ const LandingPageHeader = memo(() => {
         <ul>{MAIN_MENU.map((item) => renderItem(item))}</ul>
       </menu>
       <Drawer>
-        {({ styles: drawerStyles }) => {
+        {({ styles: drawerStyles, toggleDrawer }) => {
           return (
             <menu className={drawerStyles.mainMenu}>
-              <ul>{MAIN_MENU.map((item) => renderItem(item, true))}</ul>
+              <ul>{MAIN_MENU.map((item) => renderItem(item, toggleDrawer, true))}</ul>
             </menu>
           );
         }}
@@ -92,9 +96,17 @@ const EcPageHeader = memo(({ headers }: Props) => {
 
   const isActive = (name) => category === name;
 
-  const renderItem = (item, isTablet) => {
+  const renderItem = (item, func, isTablet) => {
     return (
-      <li key={item.name} className={isActive(item.slug) ? 'active' : null}>
+      <li
+        key={item.name}
+        onClick={() => {
+          if (typeof func === 'function') {
+            func();
+          }
+        }}
+        className={isActive(item.slug) ? 'active' : null}
+      >
         <Link href={`${APP_ROUTE.ECOMMERCE}/${item.slug}`}>
           <h6>{item.name}</h6>
         </Link>
@@ -165,11 +177,11 @@ const EcPageHeader = memo(({ headers }: Props) => {
       )}
 
       <Drawer ref={drawerRef}>
-        {({ styles: drawerStyles }) => {
+        {({ styles: drawerStyles, toggleDrawer }) => {
           return (
             <menu className={drawerStyles.mainMenu}>
               <ul>
-                {headers.map((item) => renderItem(item))}
+                {headers.map((item) => renderItem(item, toggleDrawer))}
                 <li className={drawerStyles.menuBar}>
                   {user.name ? (
                     <div className={drawerStyles.menuUser}>
@@ -188,7 +200,11 @@ const EcPageHeader = memo(({ headers }: Props) => {
                     />
                   )}
 
-                  <Link href={`${APP_ROUTE.ECOMMERCE}/cart`} className={drawerStyles.shoppingCart}>
+                  <Link
+                    href={`${APP_ROUTE.ECOMMERCE}/cart`}
+                    onClick={toggleDrawer}
+                    className={drawerStyles.shoppingCart}
+                  >
                     <Image
                       alt="shopping-cart"
                       src="/shopping-cart.png"

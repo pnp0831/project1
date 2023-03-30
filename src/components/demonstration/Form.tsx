@@ -2,6 +2,7 @@
 import React, { memo, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { FormContextProvider, useFormContext } from '~/contexts/FormContext';
+import { email } from 'react-admin';
 
 const WrapperForm = ({ children, onSubmit }) => {
   const { onSubmit: formSubmit } = useFormContext();
@@ -11,7 +12,7 @@ const WrapperForm = ({ children, onSubmit }) => {
     if (typeof onSubmit === 'function') {
       const { formValue, error } = formSubmit();
       if (!Object.keys(error).length) {
-        onSubmit(e, formValue);
+        onSubmit(formValue);
       }
     }
   };

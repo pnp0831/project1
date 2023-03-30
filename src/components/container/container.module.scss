@@ -5,38 +5,19 @@
   width: 100%;
 
   @include tablet {
-    margin: 0 50px;
     width: calc(100% - 100px)
   }
 
   @include mobile {
-    // width: 373px;
     width: calc(100% - 20px);
   }
-}
 
-
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 924px;
+  @media (min-width: 1440px) {
+    max-width: 1320px;
   }
-}
 
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1436px;
-  }
-}
-
-@media (min-width: 1680px) {
-  .container {
-    max-width: 1580px;
-  }
-}
-
-@media (min-width: 1920px) {
-  .container {
+  @media (min-width: 1920px) {
     max-width: 1680px;
   }
+
 }

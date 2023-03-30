@@ -30,7 +30,7 @@ const Drawer = ({ children, myRef }: Props) => {
           <div className={styles.close} onClick={toggleDrawer}>
             <Image alt="close" src="/close.png" width={24} height={24} loading="lazy" />
           </div>
-          {children({ styles })}
+          {children({ styles, toggleDrawer })}
         </div>
       </div>
     </>

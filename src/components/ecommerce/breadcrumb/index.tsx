@@ -19,18 +19,18 @@ const Breadcrumb = () => {
 
   if (title) {
     items.push({ label: title, href: '/' });
-  }
+  } else {
+    if (pathname === '/ecommerce/cart') {
+      items.push({ label: 'Cart', href: `${APP_ROUTE.ECOMMERCE}/cart` });
+    }
 
-  if (pathname === '/ecommerce/cart') {
-    items.push({ label: 'Cart', href: `${APP_ROUTE.ECOMMERCE}/cart` });
-  }
+    if (category) {
+      items.push({ label: category, href: `${APP_ROUTE.ECOMMERCE}/${category}` });
+    }
 
-  if (category) {
-    items.push({ label: category, href: `${APP_ROUTE.ECOMMERCE}/${category}` });
-  }
-
-  if (slug) {
-    items.push({ label: slug, href: `${APP_ROUTE.ECOMMERCE}/${category}/${slug}` });
+    if (slug) {
+      items.push({ label: slug, href: `${APP_ROUTE.ECOMMERCE}/${category}/${slug}` });
+    }
   }
 
   return (

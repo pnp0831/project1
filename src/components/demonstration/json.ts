@@ -217,6 +217,14 @@ export default {
         ],
       },
     },
+    url: {
+      name: 'Url',
+      type: 'text',
+      properties: {
+        required: false,
+        format: 'url',
+      },
+    },
     quantity: {
       name: 'Quanity',
       type: 'number',

@@ -3,28 +3,22 @@
 
 
 .productsList {
-  padding-top: 50px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
-
+  padding: 50px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 25px;
+  row-gap: 50px;
 
   @include mobile {
-    padding: 10px 10px 0 10px;
+    padding: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 40px;
+    row-gap: 10px;
   }
 
 
-}
-
-.empty {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 100px 0;
-  flex-direction: column;
-
-  button {
-    margin-top: 20px;
+  @include tablet {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 87px;
   }
 }

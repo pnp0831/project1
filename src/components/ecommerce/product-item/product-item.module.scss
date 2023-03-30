@@ -4,30 +4,13 @@
 .productItem {
   color: $primary-color;
   overflow: hidden;
-  margin-bottom: 50px;
   cursor: pointer;
   border: 1px solid $de3e4e-color;
   border-radius: 10px;
   transition: all 0.3s ease-out;
-  width: 400px;
-
-  @include tablet {
-
-    width: 250px;
-  }
-
-  @include mobile {
-    width: 150px;
-
-  }
-
 
   &.empty {
     visibility: hidden;
-  }
-
-  @include mobile {
-    margin-bottom: 10px;
   }
 
   &:hover {
@@ -37,19 +20,7 @@
   }
 
   .image {
-    height: 450px;
-    width: 400px;
     overflow: hidden;
-
-    @include tablet {
-      height: 250px;
-      width: 250px;
-    }
-
-    @include mobile {
-      height: 150px;
-      width: 150px;
-    }
   }
 
   img {
@@ -70,5 +41,6 @@
     justify-content: center;
     align-items: center;
     color: $primary-color;
+    text-transform: capitalize;
   }
 }

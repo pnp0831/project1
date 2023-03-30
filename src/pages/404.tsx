@@ -5,12 +5,14 @@ import { useAppContext } from '~/contexts/AppContext';
 
 export default function Page404() {
   const { setTitle } = useAppContext();
+
   useEffect(() => {
     setTitle('Error');
     return () => {
       setTitle();
     };
   }, []);
+
   return (
     <>
       <Head>

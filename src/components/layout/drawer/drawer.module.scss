@@ -1,5 +1,7 @@
-@import '../../styles/variables.module.scss';
-@import '../../styles/mixin.scss';
+@import '../../../styles/variables.module.scss';
+@import '../../../styles/mixin.scss';
+
+
 
 .drawerContainer {
   position: fixed;
@@ -50,6 +52,7 @@
     .close {
       text-align: right;
       height: 30px;
+      cursor: pointer;
 
       @include tablet {
         margin-right: 30px;
@@ -144,6 +147,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   @include desktop {
     display: none;

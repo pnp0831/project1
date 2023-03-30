@@ -23,29 +23,13 @@ const ProductList = ({ products, total }) => {
     push(`${APP_ROUTE.ECOMMERCE}/${category}?page=${page}`);
   };
 
+  useEffect(() => {
+    setCurrentPage(Number(page));
+  }, [page]);
+
   const [windowType] = useWindowSize();
 
   const { isMobile } = windowType;
-
-  let renderFakeItem = products.length % 4;
-
-  switch (renderFakeItem) {
-    case 1:
-      renderFakeItem = 3;
-      break;
-
-    case 2:
-      renderFakeItem = 2;
-      break;
-
-    case 3:
-      renderFakeItem = 1;
-      break;
-
-    default:
-      renderFakeItem = 0;
-      break;
-  }
 
   return (
     <Container>
@@ -54,15 +38,6 @@ const ProductList = ({ products, total }) => {
           return (
             <React.Fragment key={item.id}>
               <ProductItem product={item} />
-              {index === products.length - 1 && (
-                <>
-                  {Array.from(Array(renderFakeItem)).map((_, index) => (
-                    <Fragment key={index}>
-                      <ProductItem empty product={item} />
-                    </Fragment>
-                  ))}
-                </>
-              )}
             </React.Fragment>
           );
         })}
@@ -82,14 +57,16 @@ const ProductList = ({ products, total }) => {
             )}
           </div>
         ) : (
-          <Pagination
-            itemsPerPage={LIMIT}
-            totalItems={total}
-            onPageChange={handleOnPageChange}
-            currentPage={currentPage}
-            showLast={!isMobile}
-            siblingCount={isMobile ? 1 : 2}
-          />
+          total > LIMIT && (
+            <Pagination
+              itemsPerPage={LIMIT}
+              totalItems={total}
+              onPageChange={handleOnPageChange}
+              currentPage={currentPage}
+              showLast={!isMobile}
+              siblingCount={isMobile ? 1 : 2}
+            />
+          )
         )}
       </section>
     </Container>

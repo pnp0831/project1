@@ -103,7 +103,7 @@ const Cart = ({ product }: Props) => {
         )}
       </div>
       <div className={styles.info}>
-        <div className="body1">Infomation</div>
+        <div className={clsx('body1', styles.infomation)}>Infomation</div>
         <div className={styles.divider} />
         <div className={styles.subInfo}>
           <span className="body1">Sub Total:</span>

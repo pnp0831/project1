@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { APP_ROUTE } from '~/constants';
-import { formatter } from '~/helpers';
+import { formatter, onImageError } from '~/helpers';
 import styles from './product-item.module.scss';
 
 type Props = {
@@ -21,7 +21,7 @@ const ProductItem = ({ product, empty }: Props) => {
       {!empty && (
         <Link href={`${APP_ROUTE.ECOMMERCE}/${product.category}/${product.slug}`}>
           <div className={styles.image}>
-            <img alt={product.name} src={product.image} />
+            <img alt={product.name} src={product.image} loading="lazy" onError={onImageError} />
           </div>
 
           <h6>{product.name}</h6>

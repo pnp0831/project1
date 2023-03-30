@@ -1,10 +1,10 @@
-import CheckBoxInput from '../inputs/checkbox-input';
-import NumberInput from '../inputs/number-input';
-import QuantityInput from '../inputs/quantity-input';
-import SelectInput from '../inputs/select-input';
-import SliderInput from '../inputs/slider-input';
-import TextInput from '../inputs/text-input';
-import { regex, required } from './validation';
+import CheckBoxInput from '../components/inputs/checkbox-input';
+import NumberInput from '../components/inputs/number-input';
+import QuantityInput from '../components/inputs/quantity-input';
+import SelectInput from '../components/inputs/select-input';
+import SliderInput from '../components/inputs/slider-input';
+import TextInput from '../components/inputs/text-input';
+import { regex, REGEX_URL, required, REGEX_EMAIL } from './validation';
 
 const guesserInput = ({ properties, type, validate }) => {
   let InputComponent;
@@ -53,15 +53,23 @@ const guesserInput = ({ properties, type, validate }) => {
       break;
   }
 
+  // handle validate
+  if (properties.required) {
+    guessedProps.required = true;
+    guessedProps.validate.push(required());
+  }
+
   // handle format type
   if (['password', 'email', 'number'].includes(properties?.format)) {
     guessedProps.type = properties?.format;
   }
 
-  // handle validate
-  if (properties.required) {
-    guessedProps.required = true;
-    guessedProps.validate.push(required());
+  if (properties.format === 'email') {
+    guessedProps.validate.push(regex(REGEX_EMAIL, 'Invalid Email'));
+  }
+
+  if (properties.format === 'url') {
+    guessedProps.validate.push(regex(REGEX_URL, 'Invalid Url'));
   }
 
   if (properties.validate?.length && Array.isArray(properties.validate)) {
@@ -84,6 +92,10 @@ const guesserInput = ({ properties, type, validate }) => {
     if (properties.optionsFilterOn) {
       guessedProps.optionsFilterOn = properties.optionsFilterOn;
     }
+  }
+
+  if (properties.text) {
+    guessedProps.text = properties.text;
   }
 
   return { InputComponent, guessedProps };
