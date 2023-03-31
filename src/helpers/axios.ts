@@ -7,8 +7,11 @@ const defaultHeaders = {
   'Content-Type': 'application/json',
 };
 
-request.defaults.baseURL = config.baseUrl;
-request.defaults.timeout = config.timeout;
+export { defaultHeaders };
+
+export const setToken = (token = '') => {
+  defaultHeaders.token = token;
+};
 
 request.interceptors.response.use(
   (response) => response.data,

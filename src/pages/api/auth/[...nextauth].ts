@@ -1,55 +1,73 @@
-// Cài đặt next-auth và sử dụng strategy Google
-// npm install next-auth google
-// pages/api/auth/[...nextauth].js
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import GoogleProvider from 'next-auth/providers/google';
+import request, { setToken, defaultHeaders } from '~/helpers/axios';
 
-export default NextAuth({
-  providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    }),
-    // CredentialsProvider({
-    //   id: process.env.NEXTAUTH_SECRET,
-    //   // The name to display on the sign in form (e.g. "Sign in with...")
-    //   name: 'Credentials',
-    //   // `credentials` is used to generate a form on the sign in page.
-    //   // You can specify which fields should be submitted, by adding keys to the `credentials` object.
-    //   // e.g. domain, username, password, 2FA token, etc.
-    //   // You can pass any HTML attribute to the <input> tag through the object.
-    //   credentials: {
-    //     username: { label: 'Username', type: 'text', placeholder: 'jsmith' },
-    //     password: { label: 'Password', type: 'password' },
-    //   },
-    //   async authorize(credentials, req) {
-    //     // Add logic here to look up the user from the credentials supplied
-    //     console.log('credentials', credentials);
-    //     const user = {
-    //       ...credentials,
-    //       name: credentials.username,
-    //     };
-    //     // Validate the credentials here
-    //     // and return the user object if they are valid
-    //     return user;
-    //   },
-    // }),
-  ],
-  cookies: {
-    domain: '.vercel.app',
-  },
-  callbacks: {
-    async signIn({ user, account, profile }) {
-      return true;
+const nextAuthOptions = (req, res) => {
+  return {
+    providers: [
+      CredentialsProvider({
+        id: process.env.NEXTAUTH_SECRET,
+        name: 'Credentials',
+        credentials: {
+          username: { label: 'Username', type: 'text', placeholder: 'jsmith' },
+          password: { label: 'Password', type: 'password' },
+        },
+        async authorize(credentials, req) {
+          const { user, accessToken } = await request.post(
+            `${process.env.NEXT_PUBLIC_AUTH_URL}/api/auth/signin`,
+            {
+              username: credentials?.username,
+              password: credentials?.password,
+            }
+          );
+
+          try {
+            setToken(accessToken);
+          } catch (e) {
+            console.log('e', e);
+          }
+
+          return user;
+        },
+      }),
+    ],
+    async jwt({ token, user, account, profile, isNewUser }) {
+      return token;
     },
-    async signOut(a) {
-      return true;
+    events: {
+      async signOut({ session, token }) {
+        await request.post(
+          `${process.env.NEXT_PUBLIC_AUTH_URL}/api/auth/signout`,
+          {},
+          {
+            headers: defaultHeaders,
+          }
+        );
+        setToken();
+      },
     },
-    async redirect({ url, baseUrl }) {
-      console.log('url', url);
-      console.log('baseUrl', baseUrl);
-      return url;
+    callbacks: {
+      async signIn({ user, account, profile }) {
+        return true;
+      },
+      async session({ session, token }) {
+        const { user } = await request.get(`${process.env.NEXT_PUBLIC_AUTH_URL}/api/auth/session`, {
+          headers: defaultHeaders,
+        });
+
+        if (user?.id) {
+          return { user };
+        }
+
+        return null;
+      },
+      async redirect({ url, baseUrl }) {
+        return url;
+      },
     },
-  },
-});
+  };
+};
+
+export default (req, res) => {
+  return NextAuth(req, res, nextAuthOptions(req, res));
+};
