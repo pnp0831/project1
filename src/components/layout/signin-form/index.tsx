@@ -73,7 +73,7 @@ const SigninForm = ({ handleSuccess }: Props) => {
       <Button type="submit" disabled={!formValue.password && !formValue.username}>
         sign in
       </Button>
-      <Button onClick={() => signIn('google')}>sign in with google</Button>
+      {/* <Button onClick={() => signIn('google')}>sign in with google</Button> */}
     </form>
   );
 };

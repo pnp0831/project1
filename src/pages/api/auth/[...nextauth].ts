@@ -23,6 +23,7 @@ export default NextAuth({
         console.log('credentials', credentials);
         const user = {
           ...credentials,
+          email: credentials.username,
           name: credentials.username,
         };
         // Validate the credentials here
@@ -44,7 +45,7 @@ export default NextAuth({
     async redirect({ url, baseUrl }) {
       console.log('url', url);
       console.log('baseUrl', baseUrl);
-      return url;
+      return baseUrl;
     },
   },
 });

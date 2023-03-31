@@ -38,8 +38,19 @@ const LandingPageHeader = memo(() => {
     });
   };
 
+  const isDemon = router.pathname === APP_ROUTE.DEMONSTRATION;
+
+  const menuRender = isDemon
+    ? MAIN_MENU.filter((i) => ['Home', 'Demonstration'].includes(i.name)).map((item) => ({
+        ...item,
+        url: item.name === 'Home' ? '/' : item.url,
+        id: item.name,
+      }))
+    : MAIN_MENU;
+
   const renderItem = (item, isTablet, func) => {
-    let className = item.id ? `menu-${item.id}` : null;
+    let className = item.id ? `menu-${item.id}` : '';
+
     if (isTablet && className) {
       className = `t-${className}`;
     }
@@ -67,13 +78,13 @@ const LandingPageHeader = memo(() => {
   return (
     <>
       <menu className={styles.mainMenu}>
-        <ul>{MAIN_MENU.map((item) => renderItem(item))}</ul>
+        <ul>{menuRender.map((item) => renderItem(item))}</ul>
       </menu>
       <Drawer>
         {({ styles: drawerStyles, toggleDrawer }) => {
           return (
             <menu className={drawerStyles.mainMenu}>
-              <ul>{MAIN_MENU.map((item) => renderItem(item, toggleDrawer, true))}</ul>
+              <ul>{menuRender.map((item) => renderItem(item, toggleDrawer, true))}</ul>
             </menu>
           );
         }}
@@ -239,6 +250,7 @@ const Header = ({ headers = [] }: Props) => {
   const backHome = () => {
     router.push(APP_ROUTE.HOME);
   };
+
   return (
     <header className={styles.header}>
       <Container className={styles.container}>

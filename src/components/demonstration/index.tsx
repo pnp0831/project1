@@ -1,5 +1,5 @@
+import dynamic from 'next/dynamic';
 import React, { memo, useEffect, useMemo, useState } from 'react';
-import JSONViewer from 'react-json-viewer';
 import { useFormContext } from '~/contexts/FormContext';
 import guesserInput from '~/helpers/guessInput';
 import useInput from '~/hooks/useInput';
@@ -7,6 +7,8 @@ import useInterval from '~/hooks/useInterval';
 import Button from '../button';
 import FormCom from './Form';
 import JSON_DATA from './json';
+
+const DynamicReactJson = dynamic(import('react-json-view'), { ssr: false });
 
 interface Properties {
   required?: boolean;
@@ -105,7 +107,7 @@ const JSONViewComponent = () => {
     setJson(formValue);
   }, 2000);
 
-  return <JSONViewer json={json} />;
+  return <DynamicReactJson src={json} name="data" />;
 };
 
 const Demonstration = (props) => {

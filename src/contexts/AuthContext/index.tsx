@@ -26,11 +26,10 @@ export const AuthContextProvider = ({ children }: Props) => {
   const { user = {} } = session || {};
 
   const signin = async (info: IUser) => {
-    console.log('info', info);
     signIn('credentials', {
       ...info,
       email: info.username,
-      redirect: false,
+      redirect: true,
     });
   };
 

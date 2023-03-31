@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { APP_ROUTE } from '~/constants';
 import useWindowSize from '~/hooks/useWindowResize';
 
 const ScrollSpy = ({ children, headerSelector }) => {
@@ -7,7 +8,6 @@ const ScrollSpy = ({ children, headerSelector }) => {
   useEffect(() => {
     const sections = document.querySelectorAll('[data-section]');
     const headers = document.querySelectorAll(headerSelector.map((item) => `.${item}`));
-
     const tHeaders = document.querySelectorAll(headerSelector.map((item) => `.t-${item}`));
 
     const positions = [];
@@ -21,17 +21,14 @@ const ScrollSpy = ({ children, headerSelector }) => {
       const extendOffset = windowType.isMobile ? 101 : 101;
       const currentScrollPosition = window.pageYOffset + extendOffset;
       let currentSectionIndex = 0;
-
       positions.forEach((position, index) => {
         if (currentScrollPosition >= position) {
           currentSectionIndex = index;
         }
       });
-
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
         currentSectionIndex = headers.length - 1;
       }
-
       headers.forEach((header, index) => {
         if (index === currentSectionIndex) {
           header.classList.add('active');
@@ -48,6 +45,10 @@ const ScrollSpy = ({ children, headerSelector }) => {
     handleScroll();
 
     return () => {
+      headers.forEach((header, index) => {
+        tHeaders[index].classList.remove('active');
+      });
+
       window.removeEventListener('scroll', handleScroll);
     };
   }, [windowType]);
