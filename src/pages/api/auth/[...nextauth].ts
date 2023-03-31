@@ -51,9 +51,12 @@ const nextAuthOptions = (req, res) => {
         return true;
       },
       async session({ session, token }) {
+        console.log('sess', defaultHeaders);
         const { user } = await request.get(`${process.env.NEXT_PUBLIC_AUTH_URL}/api/auth/session`, {
           headers: defaultHeaders,
         });
+
+        console.log('user', user);
 
         if (user?.id) {
           return { user };
