@@ -8,19 +8,19 @@ import cookies from 'next-cookies';
 import { NextApiRequest, NextApiResponse } from 'next';
 import Auth0Provider from 'next-auth/providers/auth0';
 
-const useSecureCookies = !!process.env.VERCEL_URL
+const useSecureCookies = !!process.env.VERCEL_URL;
 
 const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse) => {
   return {
-    secret: process.env.NEXTAUTH_SECRET
+    secret: process.env.NEXTAUTH_SECRET,
     cookies: {
       sessionToken: {
         name: `${useSecureCookies ? '__Secure-' : ''}next-auth.session-token`,
         options: {
-          httpOnly: true,
+          httpOnly: false,
           sameSite: 'lax',
           path: '/',
-          domain: '.pam-project1.vercel.app',
+          domain: 'pam-project1.vercel.app',
           secure: useSecureCookies,
         },
       },
