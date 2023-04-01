@@ -94,7 +94,7 @@
   position: relative;
   display: inline-block;
 
-  & > div {
+  &>div {
     width: max-content;
     max-width: 150px;
     overflow: hidden;
@@ -109,7 +109,7 @@
     display: none;
     position: absolute;
     right: 0;
-    bottom: -27px;
+    bottom: -25px;
     min-width: 120px;
     border-radius: 5px;
     padding: 10px;

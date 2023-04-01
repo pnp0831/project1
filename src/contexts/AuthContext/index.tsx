@@ -1,6 +1,8 @@
-import React, { ReactNode, useContext, useState } from 'react';
+import React, { ReactNode, useContext, useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { signIn, signOut } from 'next-auth/react';
+import useInterval from '~/hooks/useInterval';
+import request from '~/helpers/axios';
 
 interface IUser {
   username?: string;
@@ -22,6 +24,17 @@ export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthContextProvider = ({ children }: Props) => {
   const { data: session, status } = useSession();
+
+  // const getAuth = async () => {
+  //   console.log('getauth');
+  //   const a = await request.get('/api/auth/session');
+  // };
+
+  // useEffect(() => {
+  //   // getAuth();
+  // }, []);
+
+  // useInterval(getAuth, 10000);
 
   const { user = {} } = session || {};
 

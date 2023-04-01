@@ -3,11 +3,9 @@ import config from '~/constants/config';
 
 const request = axios.create();
 
-const defaultHeaders = {
+export const defaultHeaders = {
   'Content-Type': 'application/json',
 };
-
-export { defaultHeaders };
 
 export const setToken = (token = '') => {
   defaultHeaders.token = token;
