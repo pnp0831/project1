@@ -10,9 +10,14 @@ import { AuthContextProvider } from '~/contexts/AuthContext';
 import { SnackbarContextProvider } from '~/contexts/SnackbarContext';
 import SnackbarContainer from '~/components/ecommerce/snackbar';
 
-export default function MyApp({ Component, pageProps, headers = CATEGORIES, ...rest }: AppProps) {
+export default function MyApp({
+  Component,
+  pageProps: { session, ...pageProps },
+  headers = CATEGORIES,
+  ...rest
+}) {
   return (
-    <AppContextProvider>
+    <AppContextProvider session={session}>
       <AuthContextProvider>
         <SnackbarContextProvider>
           <Layout headers={headers}>
