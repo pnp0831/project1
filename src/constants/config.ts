@@ -14,7 +14,7 @@ const config: Config = {
     domain:
       process.env.NODE_ENV === 'development'
         ? 'localhost'
-        : PROCESS.ENV.NEXT_DOMAIN || '.vercel.app',
+        : process.env.NEXT_DOMAIN || '.vercel.app',
     httpOnly: false,
   },
 };
