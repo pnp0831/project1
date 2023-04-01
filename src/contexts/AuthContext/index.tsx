@@ -1,8 +1,8 @@
 import React, { ReactNode, useContext, useEffect, useState } from 'react';
-import { useSession } from 'next-auth/react';
-import { signIn, signOut } from 'next-auth/react';
+import { useUser } from '@auth0/nextjs-auth0/client';
 import useInterval from '~/hooks/useInterval';
 import request from '~/helpers/axios';
+import { useRouter } from 'next/router';
 
 interface IUser {
   username?: string;
@@ -23,31 +23,17 @@ const AuthContext = React.createContext<UserContextType | null>(null);
 export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthContextProvider = ({ children }: Props) => {
-  const { data: session, status } = useSession();
+  const { user = {}, error, isLoading } = useUser();
 
-  // const getAuth = async () => {
-  //   console.log('getauth');
-  //   const a = await request.get('/api/auth/session');
-  // };
-
-  // useEffect(() => {
-  //   // getAuth();
-  // }, []);
-
-  // useInterval(getAuth, 10000);
-
-  const { user = {} } = session || {};
+  console.log({ user, error, isLoading });
+  const router = useRouter();
 
   const signin = async (info: IUser) => {
-    signIn('credentials', {
-      ...info,
-      email: info.username,
-      redirect: false,
-    });
+    router.push('/api/auth/login');
   };
 
   const signout = () => {
-    signOut({ redirect: false });
+    router.push('/api/auth/logout');
   };
 
   return <AuthContext.Provider value={{ user, signin, signout }}>{children}</AuthContext.Provider>;

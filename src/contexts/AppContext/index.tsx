@@ -1,4 +1,4 @@
-import { SessionProvider } from 'next-auth/react';
+import { UserProvider as SessionProvider } from '@auth0/nextjs-auth0/client';
 import React, { ReactNode, useContext, useState } from 'react';
 
 interface IApp {
@@ -16,14 +16,12 @@ const AppContext = React.createContext();
 
 export const useAppContext = () => useContext(AppContext);
 
-export const AppContextProvider = ({ children, session }: Props) => {
+export const AppContextProvider = ({ children }: Props) => {
   const [headers, setHeaders] = useState([]);
   const [title, setTitle] = useState();
 
-  console.log('project1', session);
-
   return (
-    <SessionProvider session={session}>
+    <SessionProvider>
       <AppContext.Provider value={{ headers, setHeaders, setTitle, title }}>
         {children}
       </AppContext.Provider>
