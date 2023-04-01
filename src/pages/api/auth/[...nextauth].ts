@@ -20,7 +20,7 @@ const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse) => {
           httpOnly: false,
           sameSite: 'lax',
           path: '/',
-          domain: '.vercel.app',
+          domain: 'pam-sso.vercel.app',
           secure: useSecureCookies,
         },
       },
