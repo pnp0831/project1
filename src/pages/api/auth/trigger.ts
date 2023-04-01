@@ -3,6 +3,7 @@ import { serialize } from 'cookie';
 import config from '~/constants/config';
 
 export default function handler(req, res) {
+  console.log('trigeer', req.method);
   if (req.method === 'POST') {
     console.log('trigger', req.body);
     setToken(req.body.token);

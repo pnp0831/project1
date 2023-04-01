@@ -86,14 +86,14 @@ const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 export default (req, res) => {
-  const cookieHeader = req.headers.cookie;
+  // const cookieHeader = req.headers.cookie;
 
-  // Parse the cookie header into an object
-  const cookies = cookieHeader ? parse(cookieHeader) : {};
+  // // Parse the cookie header into an object
+  // const cookies = cookieHeader ? parse(cookieHeader) : {};
 
-  setToken(cookies.accessToken || cookies.accesstoken);
+  // setToken(cookies.accessToken || cookies.accesstoken);
 
-  console.log('cookie', cookies.accessToken || cookies.accesstoken);
+  // console.log('cookie', cookies.accessToken || cookies.accesstoken);
 
   return NextAuth(req, res, nextAuthOptions(req, res));
 };
