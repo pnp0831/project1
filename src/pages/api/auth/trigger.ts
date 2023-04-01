@@ -11,5 +11,5 @@ export default function handler(req, res) {
     res.setHeader('Set-Cookie', serializedCookie);
   }
 
-  res.status(200).json({ status: 'ok' });
+  res.status(200).json({ status: 'ok', project1: true });
 }
