@@ -72,6 +72,11 @@ const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse) => {
           },
         });
 
+        if (cookies.accessToken) {
+          const serializedCookie = serialize('accessToken', accessToken, config.cookieConfig);
+          res.setHeader('Set-Cookie', serializedCookie);
+        }
+
         if (user?.id) {
           return { user };
         }
