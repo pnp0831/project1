@@ -92,17 +92,19 @@
 .dropDownUser {
   cursor: pointer;
   position: relative;
-  display: inline-block;
+  height: 100%;
+  display: flex;
+  align-items: center;
 
   &>div {
-    width: max-content;
-    max-width: 150px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    // width: max-content;
+    // max-width: 150px;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
 
-    -webkit-line-clamp: 1;
+    // -webkit-line-clamp: 1;
     // display: -webkit-box;
-    -webkit-box-orient: vertical;
+    // -webkit-box-orient: vertical;
   }
 
   .dropDownUserContent {
