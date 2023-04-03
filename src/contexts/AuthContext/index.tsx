@@ -23,7 +23,9 @@ const AuthContext = React.createContext<UserContextType | null>(null);
 export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthContextProvider = ({ children }: Props) => {
-  const { user = {}, error, isLoading } = useUser();
+  // const { user = {}, error, isLoading } = useUser();
+
+  const user = {};
 
   const router = useRouter();
 
