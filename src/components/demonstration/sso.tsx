@@ -45,8 +45,7 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 //   );
 // });
 
-const SSOComponent = () => {
-  const { data: session, status } = useSession();
+const SSOComponent = ({ session }) => {
   const router = useRouter();
 
   console.log('session', session, status);

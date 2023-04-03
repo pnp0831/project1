@@ -19,13 +19,13 @@ const parseUserAgent = (userAgent) => {
 
 const SSO = ({ session }) => {
   return (
-    <SessionProvider session={session}>
+    <SessionProvider>
       {/* <AuthContextProvider> */}
       <Head>
         <title>SSO</title>
       </Head>
       <Container>
-        <SSOComponent />
+        <SSOComponent session={session} />
       </Container>
       {/* </AuthContextProvider> */}
     </SessionProvider>
