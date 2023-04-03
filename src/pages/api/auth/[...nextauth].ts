@@ -3,7 +3,7 @@ import Auth0Provider from 'next-auth/providers/auth0';
 import GoogleProvider from 'next-auth/providers/google';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import request from '~/helpers/axios';
-import { setCookie, deleteCookie } from 'cookies-next';
+import { setCookie, deleteCookie, getCookie } from 'cookies-next';
 import { parseUserAgent } from '~/helpers';
 
 const authOptions = (req, res) => ({
@@ -17,13 +17,6 @@ const authOptions = (req, res) => ({
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      authorization: {
-        params: {
-          prompt: 'consent',
-          access_type: 'offline',
-          response_type: 'code',
-        },
-      },
     }),
   ],
   events: {
@@ -35,14 +28,21 @@ const authOptions = (req, res) => ({
 
       const cookies = cookieHeader ? parse(cookieHeader) : {};
 
+      console.log('signOut cookies', cookies);
+      console.log('signOut getCookie', getCookie('accessToken'));
+
       await request.post(`${process.env.NEXT_PUBLIC_AUTH_URL}/api/auth/signout`, {
         userId,
         deviceId,
       });
 
       deleteCookie('accessToken');
+
+      console.log('signOut after delete getCookie', getCookie('accessToken'));
     },
     async signIn({ user, account, profile }) {
+      console.log('signIn getCookie', getCookie('accessToken'));
+
       const deviceId = parseUserAgent(req.headers['user-agent']).client?.name;
       const bodyUser = {
         name: user.name,
@@ -58,6 +58,8 @@ const authOptions = (req, res) => ({
       await request.post(`${process.env.NEXT_PUBLIC_AUTH_URL}/api/auth/signin`, bodyUser);
 
       setCookie('accessToken', bodyUser.accessToken);
+
+      console.log('signIn after setCookie', getCookie('accessToken'));
     },
   },
 });
