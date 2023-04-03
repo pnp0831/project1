@@ -24,7 +24,7 @@ const authOptions = {
         accessToken: account.accessToken,
       };
 
-      await request.post('http://localhost:3002/api/auth/signin', bodyUser);
+      await request.post(`${process.env.NEXT_PUBLIC_AUTH_URL}/api/auth/signin`, bodyUser);
 
       return true;
     },
@@ -36,7 +36,7 @@ const authOptions = {
     async signOut({ token }) {
       const userId = token.sub;
 
-      await request.post('http://localhost:3002/api/auth/signout', {
+      await request.post(`${process.env.NEXT_PUBLIC_AUTH_URL}/api/auth/signout`, {
         userId,
       });
     },
