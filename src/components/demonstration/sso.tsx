@@ -49,6 +49,8 @@ const SSOComponent = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
 
+  console.log('session', session, status);
+
   if (status === 'authenticated') {
     return (
       <div
@@ -60,9 +62,13 @@ const SSOComponent = () => {
           padding: '50px',
         }}
       >
-        <img style={{ marginBottom: '10px' }} src={session?.user.image} alt={session?.user.name} />
-        <h2 style={{ marginBottom: '10px' }}>{session?.user.name}</h2>
-        <p style={{ marginBottom: '10px' }}>{session?.user.email}</p>
+        <img
+          style={{ marginBottom: '10px' }}
+          src={session?.user?.image}
+          alt={session?.user?.name}
+        />
+        <h2 style={{ marginBottom: '10px' }}>{session?.user?.name}</h2>
+        <p style={{ marginBottom: '10px' }}>{session?.user?.email}</p>
         <Button onClick={() => signOut()}>Logout</Button>
       </div>
     );
