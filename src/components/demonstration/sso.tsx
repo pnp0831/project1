@@ -48,7 +48,7 @@ import { deleteCookie } from 'cookies-next';
 
 const SSOComponent = ({ session }) => {
   const router = useRouter();
-
+  const a = useSession();
   console.log('session', session);
 
   if (session?.user) {
@@ -72,7 +72,7 @@ const SSOComponent = ({ session }) => {
         <Button
           onClick={() => {
             deleteCookie('accessToken');
-            signOut();
+            signOut({ redirect: false });
           }}
         >
           Logout

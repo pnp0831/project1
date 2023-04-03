@@ -48,9 +48,7 @@ export async function getServerSideProps(context) {
 
   let session = null;
 
-  console.log('user', user);
-
-  if (user?.accessToken) {
+  if (user?.accessToken && cookies['next-auth.session-token']) {
     session = {
       user,
       expires: user.expired,
