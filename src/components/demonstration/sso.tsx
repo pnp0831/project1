@@ -72,7 +72,7 @@ const SSOComponent = ({ session }) => {
         <Button
           onClick={() => {
             deleteCookie('accessToken');
-            signOut({ redirect: false });
+            signOut({});
           }}
         >
           Logout
