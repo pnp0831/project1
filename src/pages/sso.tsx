@@ -33,8 +33,6 @@ export async function getServerSideProps(context) {
     },
   });
 
-  console.log('user server', user);
-
   let session = null;
   if (user?.accessToken) {
     session = {

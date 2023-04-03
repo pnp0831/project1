@@ -51,7 +51,7 @@ const SSOComponent = () => {
 
   console.log('session', session, status);
 
-  if (status === 'authenticated') {
+  if (session?.user) {
     return (
       <div
         style={{
