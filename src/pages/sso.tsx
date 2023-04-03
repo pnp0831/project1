@@ -48,6 +48,9 @@ export async function getServerSideProps(context) {
 
   let session = null;
 
+  console.log('cookies', cookies['next-auth.session-token']);
+  console.log('user', user.accessToken);
+
   if (user?.accessToken && cookies['next-auth.session-token']) {
     session = {
       user,
@@ -56,7 +59,9 @@ export async function getServerSideProps(context) {
 
     res.setHeader('Set-Cookie', [`accessToken=${user.accessToken}`]);
   } else {
-    res.setHeader('Set-Cookie', [`accessToken=; Max-Age=0`]);
+    if (!user?.accessToken) {
+      res.setHeader('Set-Cookie', [`accessToken=; Max-Age=0`]);
+    }
   }
 
   return {
