@@ -7,6 +7,7 @@ import { SessionProvider } from 'next-auth/react';
 import request from '~/helpers/axios';
 import DeviceDetector from 'device-detector-js';
 import { getCookie, deleteCookie } from 'cookies-next';
+import { parse } from 'cookie';
 
 const parseUserAgent = (userAgent) => {
   const deviceDetector = new DeviceDetector();
