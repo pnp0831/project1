@@ -1,9 +1,9 @@
-import React, { memo } from 'react';
+import React from 'react';
 import Container from '~/components/container';
 import DemonstrationCom from '~/components/demonstration';
 import Head from 'next/head';
 
-const Demonstration = memo((props) => {
+const Demonstration = () => {
   return (
     <>
       <Head>
@@ -14,6 +14,6 @@ const Demonstration = memo((props) => {
       </Container>
     </>
   );
-});
+};
 
 export default Demonstration;

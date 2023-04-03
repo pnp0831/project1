@@ -6,8 +6,10 @@ import { useAppContext } from '~/contexts/AppContext';
 import { CartContextProvider } from '~/contexts/CartContext';
 import Breadcrumb from '../ecommerce/breadcrumb';
 import Footer from './footer';
-import Header from './header';
 import styles from './layout.module.scss';
+import dynamic from 'next/dynamic';
+
+const Header = dynamic(() => import('./header'), { ssr: false });
 
 type Props = {
   children: ReactNode;
@@ -25,7 +27,7 @@ const Layout = ({ headers: initHeaders, children }: Props) => {
 
   const router = useRouter();
 
-  const isEco = ![APP_ROUTE.HOME, APP_ROUTE.DEMONSTRATION].includes(router.pathname);
+  const isEco = ![APP_ROUTE.HOME, APP_ROUTE.DEMONSTRATION, '/sso'].includes(router.pathname);
 
   return (
     <CartContextProvider>

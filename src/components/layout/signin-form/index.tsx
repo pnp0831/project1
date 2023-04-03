@@ -3,20 +3,30 @@ import React, { useState } from 'react';
 import Button from '~/components/button';
 import CheckBoxInput from '~/components/inputs/checkbox-input';
 import TextInput from '~/components/inputs/text-input';
-import { useAuthContext } from '~/contexts/AuthContext';
 import styles from './signin-form.module.scss';
 
 type Props = {
   handleSuccess: void;
 };
 
-const SigninForm = ({ handleSuccess }: Props) => {
-  const { signin } = useAuthContext();
+const SigninForm = ({ handleSuccess, setUser, user }: Props) => {
   const [formValue, setFormValue] = useState({
     username: '',
     password: '',
     rememberMe: true,
   });
+
+  const signin = async (info: IUser) => {
+    setUser({
+      username: formValue.username,
+      password: formValue.password,
+      name: formValue.username,
+    });
+  };
+
+  const signout = () => {
+    setUser({});
+  };
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;

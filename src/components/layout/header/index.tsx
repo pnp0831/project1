@@ -38,14 +38,19 @@ const LandingPageHeader = memo(() => {
     });
   };
 
-  const isDemon = router.pathname === APP_ROUTE.DEMONSTRATION;
+  const isDemon = [APP_ROUTE.DEMONSTRATION, '/sso'].includes(router.pathname);
 
   const menuRender = isDemon
-    ? MAIN_MENU.filter((i) => ['Home', 'Demonstration'].includes(i.name)).map((item) => ({
-        ...item,
-        url: item.name === 'Home' ? '/' : item.url,
-        id: item.name,
-      }))
+    ? MAIN_MENU.filter((i) => ['Home', 'Demonstration'].includes(i.name))
+        .map((item) => ({
+          ...item,
+          url: item.name === 'Home' ? '/' : item.url,
+          id: item.name,
+        }))
+        .concat({
+          name: 'Signle Sign On',
+          url: '/sso',
+        })
     : MAIN_MENU;
 
   const renderItem = (item, isTablet, func) => {
@@ -94,8 +99,10 @@ const LandingPageHeader = memo(() => {
 });
 
 const EcPageHeader = memo(({ headers }: Props) => {
+  const [user, setUser] = useState({});
+
   const { count } = useCartContext();
-  const { user, signout } = useAuthContext();
+
   const [windowType] = useWindowSize();
 
   const modalRef = useRef();
@@ -132,7 +139,7 @@ const EcPageHeader = memo(({ headers }: Props) => {
   };
 
   const handleSignout = () => {
-    signout();
+    setUser([]);
     if (!windowType.isDesktop) {
       drawerRef.current();
     }
@@ -183,7 +190,7 @@ const EcPageHeader = memo(({ headers }: Props) => {
 
       {openModal && (
         <Modal open={openModal} onClose={() => setOpenModal(false)} title="sign in" ref={modalRef}>
-          <SigninForm handleSuccess={handleLoginSuccess} />
+          <SigninForm handleSuccess={handleLoginSuccess} user={user} setUser={setUser} />
         </Modal>
       )}
 

@@ -25,7 +25,6 @@ export const useAuthContext = () => useContext(AuthContext);
 export const AuthContextProvider = ({ children }: Props) => {
   const { user = {}, error, isLoading } = useUser();
 
-  console.log({ user, error, isLoading });
   const router = useRouter();
 
   const signin = async (info: IUser) => {

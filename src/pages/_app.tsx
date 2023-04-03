@@ -6,23 +6,20 @@ import request from '~/helpers/axios';
 import { AppContextProvider } from '~/contexts/AppContext';
 import { API_GET_CATEGORY } from '~/apis';
 import { CATEGORIES } from '~/constants';
-import { AuthContextProvider } from '~/contexts/AuthContext';
 import { SnackbarContextProvider } from '~/contexts/SnackbarContext';
 import SnackbarContainer from '~/components/ecommerce/snackbar';
 
 export default function MyApp({ Component, pageProps, headers = CATEGORIES, ...rest }) {
   return (
     <AppContextProvider>
-      <AuthContextProvider>
-        <SnackbarContextProvider>
-          <Layout headers={headers}>
-            <>
-              <Component {...pageProps} headers={headers} />
-              <SnackbarContainer />
-            </>
-          </Layout>
-        </SnackbarContextProvider>
-      </AuthContextProvider>
+      <SnackbarContextProvider>
+        <Layout headers={headers}>
+          <>
+            <Component {...pageProps} headers={headers} />
+            <SnackbarContainer />
+          </>
+        </Layout>
+      </SnackbarContextProvider>
     </AppContextProvider>
   );
 }
