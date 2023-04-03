@@ -4,6 +4,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import request from '~/helpers/axios';
 import DeviceDetector from 'device-detector-js';
 import { parse } from 'cookie';
+import { setCookie, deleteCookie } from 'cookies-next';
 
 const parseUserAgent = (userAgent) => {
   const deviceDetector = new DeviceDetector();
@@ -37,7 +38,7 @@ const authOptions = (req, res) => ({
         deviceId,
       });
 
-      res.setHeader('Set-Cookie', [`accessToken=`]);
+      deleteCookie('accessToken');
     },
     async signIn({ user, account, profile }) {
       const deviceId = parseUserAgent(req.headers['user-agent']).client?.name;
@@ -54,7 +55,7 @@ const authOptions = (req, res) => ({
 
       await request.post(`${process.env.NEXT_PUBLIC_AUTH_URL}/api/auth/signin`, bodyUser);
 
-      res.setHeader('Set-Cookie', [`accessToken=${user.accessToken}`]);
+      setCookie('accessToken', bodyUser.accessToken);
     },
   },
 });
