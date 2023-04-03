@@ -22,25 +22,7 @@ const authOptions = (req, res) => ({
       issuer: process.env.AUTH0_ISSUER_BASE_URL,
     }),
   ],
-  callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      const deviceId = parseUserAgent(req.headers['user-agent']).client?.name;
-      const bodyUser = {
-        name: profile.name,
-        email: profile.email,
-        id: profile.sub,
-        image: user.image,
-        userId: user.id,
-        accessToken: account.access_token,
-        expired: account.expires_at,
-        deviceId,
-      };
 
-      await request.post(`${process.env.NEXT_PUBLIC_AUTH_URL}/api/auth/signin`, bodyUser);
-
-      return true;
-    },
-  },
   events: {
     async signOut({ token }) {
       const userId = token.sub;
@@ -56,6 +38,23 @@ const authOptions = (req, res) => ({
       });
 
       res.setHeader('Set-Cookie', [`accessToken=`]);
+    },
+    async signIn({ user, account, profile }) {
+      const deviceId = parseUserAgent(req.headers['user-agent']).client?.name;
+      const bodyUser = {
+        name: user.name,
+        email: user.email,
+        id: user.id,
+        image: user.image,
+        userId: user.id,
+        accessToken: account.access_token,
+        expired: account.expires_at,
+        deviceId,
+      };
+
+      await request.post(`${process.env.NEXT_PUBLIC_AUTH_URL}/api/auth/signin`, bodyUser);
+
+      res.setHeader('Set-Cookie', [`accessToken=${user.accessToken}`]);
     },
   },
 });
