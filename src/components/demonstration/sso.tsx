@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Button from '../button';
 import { signIn, signOut, useSession } from 'next-auth/react';
+import { deleteCookie } from 'cookies-next';
 
 // const SSOComponent = memo((props) => {
 //   const router = useRouter();
@@ -68,7 +69,14 @@ const SSOComponent = ({ session }) => {
         />
         <h2 style={{ marginBottom: '10px' }}>{session?.user?.name}</h2>
         <p style={{ marginBottom: '10px' }}>{session?.user?.email}</p>
-        <Button onClick={() => signOut()}>Logout</Button>
+        <Button
+          onClick={() => {
+            deleteCookie('accessToken');
+            signOut();
+          }}
+        >
+          Logout
+        </Button>
       </div>
     );
   }
