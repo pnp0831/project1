@@ -5,6 +5,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import request from '~/helpers/axios';
 import { setCookie, deleteCookie, getCookie } from 'cookies-next';
 import { parseUserAgent } from '~/helpers';
+import { parse } from 'cookie';
 
 const authOptions = (req, res) => ({
   // Configure one or more authentication providers
@@ -28,21 +29,16 @@ const authOptions = (req, res) => ({
 
       const cookies = cookieHeader ? parse(cookieHeader) : {};
 
-      console.log('signOut cookies', cookies);
-      console.log('signOut getCookie', getCookie('accessToken'));
-
       await request.post(`${process.env.NEXT_PUBLIC_AUTH_URL}/api/auth/signout`, {
         userId,
         deviceId,
       });
 
-      deleteCookie('accessToken');
+      res.setHeader('Set-Cookie', [`accessToken=; Max-Age=0`]);
 
-      console.log('signOut after delete getCookie', getCookie('accessToken'));
+      deleteCookie('accessToken');
     },
     async signIn({ user, account, profile }) {
-      console.log('signIn getCookie', getCookie('accessToken'));
-
       const deviceId = parseUserAgent(req.headers['user-agent']).client?.name;
       const bodyUser = {
         name: user.name,
@@ -57,9 +53,9 @@ const authOptions = (req, res) => ({
 
       await request.post(`${process.env.NEXT_PUBLIC_AUTH_URL}/api/auth/signin`, bodyUser);
 
-      setCookie('accessToken', bodyUser.accessToken);
+      setCookie('accessToken', bodyUser.accessTokens);
 
-      console.log('signIn after setCookie', getCookie('accessToken'));
+      res.setHeader('Set-Cookie', [`accessToken=${bodyUser.accessToken}`]);
     },
   },
 });
