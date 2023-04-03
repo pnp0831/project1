@@ -5,7 +5,6 @@ import { AuthContextProvider } from '~/contexts/AuthContext';
 import SSOComponent from '~/components/demonstration/sso';
 import { SessionProvider } from 'next-auth/react';
 import request from '~/helpers/axios';
-import Cookies from 'next-cookies';
 import DeviceDetector from 'device-detector-js';
 import { getCookie, deleteCookie } from 'cookies-next';
 
