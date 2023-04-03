@@ -6,6 +6,15 @@ import SSOComponent from '~/components/demonstration/sso';
 import { SessionProvider } from 'next-auth/react';
 import request from '~/helpers/axios';
 import Cookies from 'next-cookies';
+import DeviceDetector from 'device-detector-js';
+
+const parseUserAgent = (userAgent) => {
+  const deviceDetector = new DeviceDetector();
+
+  const device = deviceDetector.parse(userAgent);
+
+  return device;
+};
 
 const SSO = ({ session }) => {
   return (
