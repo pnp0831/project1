@@ -53,8 +53,7 @@ export async function getStaticProps(context) {
 
   const products = await request.get(API_GET_PRODUCT_ITEM(category, slug));
 
-  const product = products?.[0];
-
+  const product = products?.find((i) => i.slug === slug && i.category === category);
   // const product = PRODUCTS.filter((item) => item.slug === slug && item.category === category)?.[0];
 
   if (!product) {
