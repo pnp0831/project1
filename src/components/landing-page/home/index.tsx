@@ -9,7 +9,7 @@ const Home = () => (
     <Image
       src="/bg-landingpage.jpg"
       alt="bg"
-      loading="lazy"
+      // loading="lazy"
       height={500}
       width={500}
       className={styles.image}
