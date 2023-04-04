@@ -48,7 +48,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     };
   }
 
-  const products = PRODUCTS.filter((item) => item.category === category);
+  const products = await request.get(API_GET_PRODUCT_LIST(page, category));
+
+  // const products = PRODUCTS.filter((item) => item.category === category);
+
   const total = products.length;
   const productsRender = products.slice((page - 1) * LIMIT, page * LIMIT);
 
@@ -86,9 +89,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 // export async function getStaticProps(context) {
 //   const { params } = context;
 
-//   console.log('context', context);
+//   const products = await request.get(API_GET_PRODUCT_LIST(params.category));
 
-//   const products = PRODUCTS.filter((item) => item.category === params.category);
+//   // const products = PRODUCTS.filter((item) => item.category === params.category);
 
 //   const total = products.length;
 
@@ -97,7 +100,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 //   return {
 //     props: {
 //       products,
-//       // total,
+//       total,
 //     },
 //   };
 // }

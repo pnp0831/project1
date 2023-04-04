@@ -8,8 +8,6 @@ export const API_GET_PRODUCT_LIST = (page = 1, category: string) => {
   url.searchParams.append('category', category);
   url.searchParams.append('limit', config.limit);
 
-  console.log('url', url);
-
   return url;
 };
 
