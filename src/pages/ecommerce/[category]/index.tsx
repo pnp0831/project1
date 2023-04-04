@@ -14,7 +14,9 @@ type Props = {
 };
 
 const ProductList = ({ products = [], total }) => {
-  // const { query } = useRouter();
+  const { query } = useRouter();
+  const [productRender, setProductRender] = useState(products);
+  const page = query.page || 1;
   // const { category } = query;
   // const [products, setProducts] = useState([]);
 
@@ -26,13 +28,19 @@ const ProductList = ({ products = [], total }) => {
   //   getProducts(category);
   // }, [category]);
 
+  useEffect(() => {
+    const tmp = products.slice((page - 1) * LIMIT, page * LIMIT);
+
+    setProductRender(tmp);
+  }, [page, products]);
+
   return (
     <>
       <Head>
         <title>Product List</title>
         <meta name="description" content="Pants, Shorts, Shirt ,..." unique="true" />
       </Head>
-      <ProductListCom products={products} total={total} />
+      <ProductListCom products={productRender} total={total} />
     </>
   );
 };
