@@ -94,6 +94,7 @@ export async function getStaticProps(context) {
       products,
       total,
     },
+    revalidate: 10, // In seconds
   };
 }
 
