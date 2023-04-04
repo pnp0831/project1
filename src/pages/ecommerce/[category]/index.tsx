@@ -37,7 +37,7 @@ const ProductList = ({ products = [], total }) => {
   return (
     <>
       <Head>
-        <title>Product List ISR</title>
+        <title>Product List</title>
         <meta name="description" content="Pants, Shorts, Shirt ,..." unique="true" />
       </Head>
       <ProductListCom products={productRender} total={total} />
@@ -105,7 +105,6 @@ export async function getStaticProps(context) {
       products,
       total,
     },
-    revalidate: 20, // In seconds
   };
 }
 

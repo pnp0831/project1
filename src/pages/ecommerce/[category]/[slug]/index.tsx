@@ -9,7 +9,7 @@ const ProductDetail = ({ product = {} }) => {
   return (
     <>
       <Head>
-        <title>Product Detail ISR</title>
+        <title>Product Detail</title>
         <meta name="description" content={`${product.name} salessss`} unique="true" />
       </Head>
       {product.id && <ProductDetailC product={product} />}
@@ -67,7 +67,6 @@ export async function getStaticProps(context) {
     props: {
       product,
     },
-    revalidate: 20, // In seconds
   };
 }
 
