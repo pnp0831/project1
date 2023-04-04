@@ -48,7 +48,16 @@ const SSOComponent = ({ session }) => {
         />
         <h2 style={{ marginBottom: '10px' }}>{session?.user?.name}</h2>
         <p style={{ marginBottom: '10px' }}>{session?.user?.email}</p>
-        <Button onClick={logout}>Logout</Button>
+        <Button style={{ marginBottom: '10px' }} onClick={logout}>
+          Logout
+        </Button>{' '}
+        <Button
+          onClick={() => {
+            window.open(process.env.NEXT_PUBLIC_SSO_PAGE_URL, '_blank');
+          }}
+        >
+          Go To SSO Page
+        </Button>
       </div>
     );
   }
@@ -65,7 +74,16 @@ const SSOComponent = ({ session }) => {
     >
       <h1 style={{ marginBottom: '50px' }}>Sign In</h1>
 
-      <Button onClick={() => signIn()}>Login</Button>
+      <Button style={{ marginBottom: '10px' }} onClick={() => signIn()}>
+        Login
+      </Button>
+      <Button
+        onClick={() => {
+          window.open(process.env.NEXT_PUBLIC_SSO_PAGE_URL, '_blank');
+        }}
+      >
+        Go To SSO Page
+      </Button>
     </div>
   );
 };
