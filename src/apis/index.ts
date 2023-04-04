@@ -11,6 +11,14 @@ export const API_GET_PRODUCT_LIST = (page = 1, category: string) => {
   return url;
 };
 
+export const API_GET_PRODUCT_TOTAL = (category: string) => {
+  const url = new URL(`https://641031d1864814e5b649fc8e.mockapi.io/api/products`);
+
+  url.searchParams.append('category', category);
+
+  return url;
+};
+
 export const API_GET_PRODUCT_ITEM = (category: string, slug: string) => {
   const url = new URL(`https://641031d1864814e5b649fc8e.mockapi.io/api/products`);
 

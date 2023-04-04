@@ -3,7 +3,7 @@ import { GetServerSidePropsContext } from 'next';
 import request from '~/helpers/axios';
 import Container from '~/components/container';
 import ProductListCom from '~/components/ecommerce/product-list';
-import { API_GET_CATEGORY, API_GET_PRODUCT_LIST } from '~/apis';
+import { API_GET_CATEGORY, API_GET_PRODUCT_LIST, API_GET_PRODUCT_TOTAL } from '~/apis';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { CATEGORIES, LIMIT, PRODUCTS } from '~/constants';
@@ -49,16 +49,19 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   }
 
   const products = await request.get(API_GET_PRODUCT_LIST(page, category));
+  const totalLength = await request.get(API_GET_PRODUCT_TOTAL(category));
+
+  context.res.setHeader('Cache-Control', 's-maxage=5, state-while-revalidate');
 
   // const products = PRODUCTS.filter((item) => item.category === category);
 
-  const total = products.length;
+  const total = totalLength.length;
   // const productsRender = products.slice((page - 1) * LIMIT, page * LIMIT);
 
   return {
     props: {
       products,
-      total: 100,
+      total,
     },
   };
 }
