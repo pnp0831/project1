@@ -92,17 +92,18 @@ export async function getStaticProps(context) {
   const { category, page = 1 } = params;
 
   const products = await request.get(API_GET_PRODUCT_LIST(params.category));
+  const totalLength = await request.get(API_GET_PRODUCT_TOTAL(params.category));
 
   // const products = PRODUCTS.filter((item) => item.category === params.category);
 
-  // const total = products.length;
+  const total = totalLength.length;
 
   // const productsRender = products.slice((page - 1) * LIMIT, page * LIMIT);
 
   return {
     props: {
       products,
-      // total,
+      total,
     },
     revalidate: 20, // In seconds
   };
