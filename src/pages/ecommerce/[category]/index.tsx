@@ -3,7 +3,7 @@ import { GetServerSidePropsContext } from 'next';
 import request from '~/helpers/axios';
 import Container from '~/components/container';
 import ProductListCom from '~/components/ecommerce/product-list';
-import { API_GET_CATEGORY, API_GET_PRODUCT_LIST } from '~/apis';
+import { API_GET_CATEGORY, API_GET_PRODUCT_LIST, API_GET_PRODUCT_TOTAL } from '~/apis';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { CATEGORIES, LIMIT, PRODUCTS } from '~/constants';
