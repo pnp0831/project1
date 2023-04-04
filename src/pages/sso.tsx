@@ -21,6 +21,7 @@ const SSO = ({ session }) => {
     <SessionProvider>
       <Head>
         <title>SSO</title>
+        <meta name="description" content="SSO" unique="true" />
       </Head>
       <Container>
         <SSOComponent session={session} />

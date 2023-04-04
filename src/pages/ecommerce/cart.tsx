@@ -6,6 +6,7 @@ const Cart = () => {
     <>
       <Head>
         <title>Cart</title>
+        <meta name="description" content="Cart" unique="true" />
       </Head>
       <CartCom />
     </>

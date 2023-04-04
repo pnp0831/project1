@@ -30,6 +30,7 @@ const ProductList = ({ products = [], total }) => {
     <>
       <Head>
         <title>Product List</title>
+        <meta name="description" content="Pants, Shorts, Shirt ,..." unique="true" />
       </Head>
       <ProductListCom products={products} total={total} />
     </>

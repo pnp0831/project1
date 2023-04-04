@@ -15,6 +15,7 @@ export default function LandingPage() {
     <>
       <Head>
         <title>Landing Page</title>
+        <meta name="description" content="Landing Page" unique="true" />
       </Head>
       <ScrollSpy headerSelector={MAIN_MENU.filter((i) => !i.url).map((i) => `menu-${i.id}`)}>
         <Home />

@@ -10,6 +10,7 @@ const ProductDetail = ({ product = {} }) => {
     <>
       <Head>
         <title>{product.name}</title>
+        <meta name="description" content={`${product.name} salessss`} unique="true" />
       </Head>
       {product.id && <ProductDetailC product={product} />}
     </>

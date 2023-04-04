@@ -8,6 +8,7 @@ const Demonstration = () => {
     <>
       <Head>
         <title>Form</title>
+        <meta name="description" content="Form" unique="true" />
       </Head>
       <Container>
         <DemonstrationCom />
