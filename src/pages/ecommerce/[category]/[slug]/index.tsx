@@ -9,7 +9,7 @@ const ProductDetail = ({ product = {} }) => {
   return (
     <>
       <Head>
-        <title>{product.name} ISR</title>
+        <title>Product Detail ISR</title>
         <meta name="description" content={`${product.name} salessss`} unique="true" />
       </Head>
       {product.id && <ProductDetailC product={product} />}
