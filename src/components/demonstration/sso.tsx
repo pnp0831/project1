@@ -22,6 +22,8 @@ const SSOComponent = ({ session }) => {
         csrtToken,
         userId: session?.user?.userId,
       });
+      deleteCookie('__Secure-next-auth.session-token');
+      deleteCookie('next-auth.session-token');
       window.location.reload();
     } else {
       signOut();
