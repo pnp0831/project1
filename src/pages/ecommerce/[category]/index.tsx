@@ -81,18 +81,20 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const { params } = context;
 
-  const products = await request.get(API_GET_PRODUCT_LIST(params.category));
+  const { category, page = 1 } = params;
+
+  const products = await request.get(API_GET_PRODUCT_LIST(page, params.category));
 
   // const products = PRODUCTS.filter((item) => item.category === params.category);
 
-  const total = products.length;
+  // const total = products.length;
 
   // const productsRender = products.slice((page - 1) * LIMIT, page * LIMIT);
 
   return {
     props: {
       products,
-      total,
+      // total,
     },
     revalidate: 10, // In seconds
   };
