@@ -9,7 +9,7 @@ const ProductDetail = ({ product = {} }) => {
   return (
     <>
       <Head>
-        <title>Product Detail</title>
+        <title>Product Detail SSR</title>
         <meta name="description" content={`${product.name} salessss`} unique="true" />
       </Head>
       {product.id && <ProductDetailC product={product} />}
@@ -17,37 +17,7 @@ const ProductDetail = ({ product = {} }) => {
   );
 };
 
-// export async function getServerSideProps(context: GetServerSidePropsContext) {
-//   const { params = {} } = context;
-//   const { slug, category } = params;
-
-//   const products = await request.get(API_GET_PRODUCT_ITEM(category, slug));
-
-//   const product = products?.[0];
-
-//   // const product = PRODUCTS.filter((item) => item.slug === slug && item.category === category)?.[0];
-
-//   if (!product) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-
-//   return {
-//     props: {
-//       product,
-//     },
-//   };
-// }
-
-export async function getStaticPaths(context) {
-  return {
-    paths: [],
-    fallback: true,
-  };
-}
-
-export async function getStaticProps(context) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { params = {} } = context;
   const { slug, category } = params;
 
@@ -69,5 +39,35 @@ export async function getStaticProps(context) {
     },
   };
 }
+
+// export async function getStaticPaths(context) {
+//   return {
+//     paths: [],
+//     fallback: true,
+//   };
+// }
+
+// export async function getStaticProps(context) {
+//   const { params = {} } = context;
+//   const { slug, category } = params;
+
+//   const products = await request.get(API_GET_PRODUCT_ITEM(category, slug));
+
+//   const product = products?.[0];
+
+//   // const product = PRODUCTS.filter((item) => item.slug === slug && item.category === category)?.[0];
+
+//   if (!product) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+
+//   return {
+//     props: {
+//       product,
+//     },
+//   };
+// }
 
 export default ProductDetail;
