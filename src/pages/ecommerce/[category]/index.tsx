@@ -53,12 +53,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   // const products = PRODUCTS.filter((item) => item.category === category);
 
   const total = products.length;
-  const productsRender = products.slice((page - 1) * LIMIT, page * LIMIT);
+  // const productsRender = products.slice((page - 1) * LIMIT, page * LIMIT);
 
   return {
     props: {
-      products: productsRender,
-      total,
+      products,
+      total: 100,
     },
   };
 }
