@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import React, { Fragment } from 'react';
 import Container from '~/components/container';
 import { APP_ROUTE } from '~/constants';
-import { useAppContext } from '~/contexts/AppContext';
+import { useAppContext } from '~/contexts/app-context';
 import styles from './breadcrumb.module.scss';
 
 const Breadcrumb = () => {

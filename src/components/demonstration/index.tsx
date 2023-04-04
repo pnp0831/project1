@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import React, { memo, useEffect, useMemo, useState } from 'react';
-import { useFormContext } from '~/contexts/FormContext';
+import { useFormContext } from '~/contexts/form-context';
 import guesserInput from '~/helpers/guessInput';
 import useInput from '~/hooks/useInput';
 import useInterval from '~/hooks/useInterval';

@@ -2,7 +2,7 @@ import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { APP_ROUTE } from '~/constants';
-import { useAppContext } from '~/contexts/AppContext';
+import { useAppContext } from '~/contexts/app-context';
 
 const Ecommerce = () => {
   const router = useRouter();

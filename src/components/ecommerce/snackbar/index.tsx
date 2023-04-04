@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import React, { useState, useEffect, memo } from 'react';
-import { useSnackbarContext } from '~/contexts/SnackbarContext';
+import { useSnackbarContext } from '~/contexts/snackbar-context';
 import styles from './snackbar.module.scss';
 
 const Snackbar = ({ message, duration, onClose, style }) => {

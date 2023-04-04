@@ -9,13 +9,13 @@ import Link from 'next/link';
 import Drawer from '~/components/layout/drawer';
 import { useRouter } from 'next/router';
 import clsx from 'clsx';
-import { useCartContext } from '~/contexts/CartContext';
+import { useCartContext } from '~/contexts/cart-context';
 import Modal from '~/components/modal';
 import TextInput from '~/components/inputs/text-input';
 import Button from '~/components/button';
 import CheckBoxInput from '~/components/inputs/checkbox-input';
 import SigninForm from '../signin-form';
-import { useAuthContext } from '~/contexts/AuthContext';
+import { useAuthContext } from '~/contexts/auth-context';
 import useWindowSize from '~/hooks/useWindowResize';
 
 const LandingPageHeader = memo(() => {

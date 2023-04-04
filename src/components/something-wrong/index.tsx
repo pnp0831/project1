@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { APP_ROUTE } from '~/constants';
-import { useAppContext } from '~/contexts/AppContext';
+import { useAppContext } from '~/contexts/app-context';
 import Button from '../button';
 import Container from '../container';
 import styles from './something-wrong.module.scss';

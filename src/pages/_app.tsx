@@ -3,10 +3,10 @@ import type { AppProps } from 'next/app';
 import Layout from '~/components/layout';
 import App, { AppContext, NextWebVitalsMetric } from 'next/app';
 import request from '~/helpers/axios';
-import { AppContextProvider } from '~/contexts/AppContext';
+import { AppContextProvider } from '~/contexts/app-context';
 import { API_GET_CATEGORY } from '~/apis';
 import { CATEGORIES } from '~/constants';
-import { SnackbarContextProvider } from '~/contexts/SnackbarContext';
+import { SnackbarContextProvider } from '~/contexts/snackbar-context';
 import SnackbarContainer from '~/components/ecommerce/snackbar';
 
 export default function MyApp({ Component, pageProps, headers = CATEGORIES, ...rest }) {

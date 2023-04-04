@@ -1,7 +1,7 @@
 /* eslint-disable react/no-children-prop */
 import React, { memo, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import { FormContextProvider, useFormContext } from '~/contexts/FormContext';
+import { FormContextProvider, useFormContext } from '~/contexts/form-context';
 import { email } from 'react-admin';
 
 const WrapperForm = ({ children, onSubmit }) => {

@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
 import SomethingWrong from '~/components/something-wrong';
-import { useAppContext } from '~/contexts/AppContext';
+import { useAppContext } from '~/contexts/app-context';
 
 export default function Page404() {
   const { setTitle } = useAppContext();
