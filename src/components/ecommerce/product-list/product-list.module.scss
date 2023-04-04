@@ -19,4 +19,14 @@
     grid-template-columns: repeat(3, 1fr);
     column-gap: 87px;
   }
+
+
+}
+
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 50px;
 }

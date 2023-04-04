@@ -7,12 +7,15 @@ import { APP_ROUTE, LIMIT } from '~/constants';
 import useWindowSize from '~/hooks/useWindowResize';
 import ProductItem from '../product-item';
 import styles from './product-list.module.scss';
+import { useAppContext } from '~/contexts/app-context';
 
 type Props = {};
 
 const ProductList = ({ products, total }) => {
   const { query, push } = useRouter();
   const { category, page = 1 } = query;
+
+  const { headers } = useAppContext();
 
   const [currentPage, setCurrentPage] = useState(Number(page));
 
@@ -49,10 +52,10 @@ const ProductList = ({ products, total }) => {
             {page !== 1 && (
               <Button
                 onClick={() => {
-                  push(`${APP_ROUTE.ECOMMERCE}/${category}?page=1`);
+                  push(`${APP_ROUTE.ECOMMERCE}/${headers?.[0]?.slug}`);
                 }}
               >
-                Go to page 1
+                Back Home
               </Button>
             )}
           </div>
