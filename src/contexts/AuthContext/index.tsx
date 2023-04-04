@@ -1,5 +1,4 @@
 import React, { ReactNode, useContext, useEffect, useState } from 'react';
-import { useUser } from '@auth0/nextjs-auth0/client';
 import useInterval from '~/hooks/useInterval';
 import request from '~/helpers/axios';
 import { useRouter } from 'next/router';

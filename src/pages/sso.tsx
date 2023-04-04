@@ -1,7 +1,6 @@
 import React, { memo, useEffect, useState } from 'react';
 import Container from '~/components/container';
 import Head from 'next/head';
-import { AuthContextProvider } from '~/contexts/AuthContext';
 import SSOComponent from '~/components/demonstration/sso';
 import { SessionProvider } from 'next-auth/react';
 import request from '~/helpers/axios';
@@ -20,14 +19,12 @@ const parseUserAgent = (userAgent) => {
 const SSO = ({ session }) => {
   return (
     <SessionProvider>
-      {/* <AuthContextProvider> */}
       <Head>
         <title>SSO</title>
       </Head>
       <Container>
         <SSOComponent session={session} />
       </Container>
-      {/* </AuthContextProvider> */}
     </SessionProvider>
   );
 };
@@ -50,11 +47,6 @@ export async function getServerSideProps(context) {
 
   const nextCookie =
     cookies['__Secure-next-auth.session-token'] || cookies['next-auth.session-token'];
-
-  console.log('cookies', cookies['next-auth.session-token']);
-  console.log('213', cookies);
-  console.log('user', user.accessToken);
-  console.log('cookie', cookies['__Secure-next-auth.session-token']);
 
   if (user?.accessToken) {
     session = {
