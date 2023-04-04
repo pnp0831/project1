@@ -29,13 +29,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { category, page = 1 } = context.query;
 
   const products = await request.get(API_GET_PRODUCT_LIST(category, page));
+  const totalLength = await request.get(API_GET_PRODUCT_TOTAL(category));
 
-  const total = products.length;
-  const productsRender = products.slice((page - 1) * LIMIT, page * LIMIT);
+  const total = totalLength.length;
 
   return {
     props: {
-      products: productsRender,
+      products,
       total,
     },
   };
