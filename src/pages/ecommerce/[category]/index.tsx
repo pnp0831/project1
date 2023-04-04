@@ -91,7 +91,7 @@ export async function getStaticProps(context) {
 
   const { category, page = 1 } = params;
 
-  const products = await request.get(API_GET_PRODUCT_LIST(page, params.category));
+  const products = await request.get(API_GET_PRODUCT_LIST(params.category, page));
 
   // const products = PRODUCTS.filter((item) => item.category === params.category);
 
@@ -104,7 +104,7 @@ export async function getStaticProps(context) {
       products,
       // total,
     },
-    revalidate: 10, // In seconds
+    revalidate: 20, // In seconds
   };
 }
 
