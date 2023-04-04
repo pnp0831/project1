@@ -11,13 +11,14 @@ import React, {
 
 type Props = {
   children: ReactNode;
+  myRef: any;
 };
 
 const FormContext = React.createContext();
 
 export const useFormContext = () => useContext(FormContext);
 
-export const FormContextProvider = ({ children }: Props) => {
+export const FormContextProvider = ({ children, myRef }: Props) => {
   const refFormValue = useRef({});
   const refForm = useRef({});
 
@@ -107,6 +108,26 @@ export const FormContextProvider = ({ children }: Props) => {
     };
   };
 
+  const resetForm = () => {
+    // refFormValue.current = {};
+    // console.log('refFormValue', refFormValue);
+  };
+
+  useEffect(() => {
+    if (myRef.current) {
+      myRef.current = {
+        onChangeForm,
+        getFormValue,
+        registerForm,
+        onSubmit,
+        getFormFilterOn,
+        updateRefForm,
+        getFromRef,
+        resetForm,
+      };
+    }
+  }, []);
+
   return (
     <FormContext.Provider
       value={{
@@ -117,6 +138,7 @@ export const FormContextProvider = ({ children }: Props) => {
         getFormFilterOn,
         updateRefForm,
         getFromRef,
+        resetForm,
       }}
     >
       {children}

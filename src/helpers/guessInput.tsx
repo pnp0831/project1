@@ -75,7 +75,7 @@ const guesserInput = ({ properties, type, validate }) => {
   if (properties.validate?.length && Array.isArray(properties.validate)) {
     properties.validate.forEach((validateItem) => {
       if ('pattern' in validateItem) {
-        guessedProps.validate.push(regex(validateItem.pattern, validateItem.descrpition));
+        guessedProps.validate.push(regex(validateItem.pattern, validateItem.description));
       }
     });
   }

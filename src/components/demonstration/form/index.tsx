@@ -1,5 +1,5 @@
 /* eslint-disable react/no-children-prop */
-import React, { memo, useReducer } from 'react';
+import React, { forwardRef, memo, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { FormContextProvider, useFormContext } from '~/contexts/form-context';
 import { email } from 'react-admin';
@@ -11,9 +11,8 @@ const WrapperForm = ({ children, onSubmit }) => {
     e.preventDefault();
     if (typeof onSubmit === 'function') {
       const { formValue, error } = formSubmit();
-      if (!Object.keys(error).length) {
-        onSubmit(formValue);
-      }
+
+      onSubmit(formValue, !Object.keys(error).length);
     }
   };
 
@@ -26,12 +25,12 @@ const WrapperForm = ({ children, onSubmit }) => {
   );
 };
 
-const Form = memo(({ children, ...props }) => {
+const Form = memo(({ children, myRef, ...props }) => {
   return (
-    <FormContextProvider>
+    <FormContextProvider myRef={myRef}>
       <WrapperForm {...props} children={children} />
     </FormContextProvider>
   );
 });
 
-export default Form;
+export default forwardRef((props: Props, ref) => <Form {...props} myRef={ref} />);

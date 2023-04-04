@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { useRouter } from 'next/router';
-import Button from '../button';
+import Button from '../../button';
 import { getCsrfToken, signIn, signOut, useSession } from 'next-auth/react';
 import { deleteCookie } from 'cookies-next';
 

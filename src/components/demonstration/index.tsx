@@ -1,12 +1,12 @@
 import dynamic from 'next/dynamic';
-import React, { memo, useEffect, useMemo, useState } from 'react';
+import React, { memo, useEffect, useMemo, useRef, useState } from 'react';
 import { useFormContext } from '~/contexts/form-context';
 import guesserInput from '~/helpers/guessInput';
 import useInput from '~/hooks/useInput';
 import useInterval from '~/hooks/useInterval';
 import Button from '../button';
-import FormCom from './Form';
-import JSON_DATA from './json';
+import FormCom from './form';
+import JSON_DATA from './data-json';
 
 const DynamicReactJson = dynamic(import('react-json-view'), { ssr: false });
 
@@ -70,6 +70,7 @@ const GuessInputComponent = memo((props: InputProps) => {
   const { InputComponent, guessedProps } = componentInfo;
 
   useEffect(() => {
+    console.log('s');
     const { type, properties } = props;
     const { InputComponent, guessedProps } = guesserInput({
       type,
@@ -107,49 +108,67 @@ const JSONViewComponent = () => {
     setJson(formValue);
   }, 2000);
 
-  return <DynamicReactJson src={json} name="data" />;
+  return <DynamicReactJson src={json} name="Form Data" />;
 };
 
 const Demonstration = (props) => {
-  const handleOnSubmit = (formValue) => {
-    console.log(formValue);
+  const refForm = useRef({});
+
+  const [jsonData, setJsonData] = useState(JSON_DATA['joist']);
+
+  const onEdit = ({ updated_src }) => {
+    setJsonData(updated_src);
+    refForm.current.resetForm();
   };
 
-  const jsonData = JSON_DATA['joist'];
+  const handleOnSubmit = (formValue, error) => {
+    console.log(formValue);
+
+    console.log('refForm', refForm.current);
+  };
 
   return (
-    <FormCom onSubmit={handleOnSubmit}>
-      <div
-        style={{
-          padding: '50px',
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}
-      >
-        <div style={{ marginTop: '50px' }}>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-            }}
-          >
-            <div>
-              {Object.values(jsonData).map((item, index) => {
-                const id = Object.keys(jsonData)[index];
-                return (
-                  <div style={{ margin: '10px' }} key={id}>
-                    <GuessInputComponent {...item} name={item.name} id={id} />
-                  </div>
-                );
-              })}
-              <Button type="submit">Submit</Button>
+    <div style={{ padding: '50px' }}>
+      <DynamicReactJson
+        src={JSON_DATA['joist']}
+        name="Json Data"
+        collapsed
+        enableClipboard={false}
+        onEdit={onEdit}
+      />
+
+      <FormCom onSubmit={handleOnSubmit} ref={refForm}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+          }}
+        >
+          <div style={{ marginTop: '50px' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'flex-start',
+              }}
+            >
+              <div>
+                {Object.values(jsonData).map((item, index) => {
+                  const id = Object.keys(jsonData)[index];
+                  return (
+                    <div style={{ margin: '10px' }} key={id}>
+                      <GuessInputComponent {...item} name={item.name} id={id} />
+                    </div>
+                  );
+                })}
+                <Button type="submit">Submit</Button>
+              </div>
+              <JSONViewComponent />
             </div>
-            <JSONViewComponent />
           </div>
         </div>
-      </div>
-    </FormCom>
+      </FormCom>
+    </div>
   );
 };
 
