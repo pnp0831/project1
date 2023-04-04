@@ -49,6 +49,7 @@ export async function getStaticPaths(context) {
 
 export async function getStaticProps(context) {
   const { params = {} } = context;
+
   const { slug, category } = params;
 
   const products = await request.get(API_GET_PRODUCT_ITEM(category, slug));
