@@ -22,7 +22,7 @@ const SSOComponent = ({ session }) => {
         csrtToken,
         userId: session?.user?.userId,
       });
-      window.location.href = window.location.href;
+      window.location.reload();
     } else {
       signOut({ redirect: false });
     }
