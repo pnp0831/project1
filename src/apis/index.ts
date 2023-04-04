@@ -12,7 +12,7 @@ export const API_GET_PRODUCT_LIST = (category: string, page?: string | number) =
     url.searchParams.append('limit', config.limit);
   }
 
-  url.searchParams.append('category', category);
+  // url.searchParams.append('category', category);
   url.searchParams.append('categoryId', getCategoryId(category));
 
   return url;
@@ -21,7 +21,7 @@ export const API_GET_PRODUCT_LIST = (category: string, page?: string | number) =
 export const API_GET_PRODUCT_TOTAL = (category: string) => {
   const url = new URL(`https://641031d1864814e5b649fc8e.mockapi.io/api/products`);
 
-  url.searchParams.append('category', category);
+  // url.searchParams.append('category', category);
   url.searchParams.append('categoryId', getCategoryId(category));
 
   return url;
@@ -31,6 +31,7 @@ export const API_GET_PRODUCT_ITEM = (category: string, slug: string) => {
   const url = new URL(`https://641031d1864814e5b649fc8e.mockapi.io/api/products`);
 
   url.searchParams.append('search', slug);
+  url.searchParams.append('categoryId', getCategoryId(category));
 
   return url;
 };
