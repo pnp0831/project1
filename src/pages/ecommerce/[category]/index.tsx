@@ -51,7 +51,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const products = await request.get(API_GET_PRODUCT_LIST(page, category));
   const totalLength = await request.get(API_GET_PRODUCT_TOTAL(category));
 
-  context.res.setHeader('Cache-Control', 's-maxage=5, state-while-revalidate');
+  context.res.setHeader('Cache-Control', 's-maxage=60, state-while-revalidate');
 
   // const products = PRODUCTS.filter((item) => item.category === category);
 
