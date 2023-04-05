@@ -52,11 +52,11 @@ $mwidth: 220px;
       }
     }
 
-    @include desktop {
-      &:hover .workItemHover {
-        bottom: 0;
-      }
+    &:hover .workItemHover {
+      bottom: 0;
     }
+
+    @include desktop {}
 
     .overlay {
       width: 100%;
@@ -127,6 +127,11 @@ $mwidth: 220px;
         button {
           height: 40px;
         }
+      }
+
+      @include tablet {
+        height: auto;
+        padding: 0 30px;
       }
     }
   }
