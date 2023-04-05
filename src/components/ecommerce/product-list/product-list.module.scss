@@ -20,6 +20,10 @@
     column-gap: 87px;
   }
 
+  @include small-tablet {
+    column-gap: 50px;
+  }
+
 
 }
 

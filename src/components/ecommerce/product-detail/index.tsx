@@ -8,7 +8,7 @@ import QuantityInput from '~/components/inputs/quantity-input';
 import { useCartContext } from '~/contexts/cart-context';
 import { useSnackbarContext } from '~/contexts/snackbar-context';
 import { formatter, onImageError } from '~/helpers';
-import useWindowSize from '~/hooks/useWindowResize';
+
 import Snackbar from '../snackbar';
 import styles from './product-detail.module.scss';
 
@@ -29,8 +29,6 @@ const ProductDetail = ({ product }: Props) => {
     addItem(product, Number(quantity));
     showMessage('You cool product is in the cart!');
   };
-
-  const [windowType] = useWindowSize();
 
   const components = (
     <div className={styles.info} ref={refInfo}>
@@ -59,13 +57,6 @@ const ProductDetail = ({ product }: Props) => {
           </picture>
         </div>
         {components}
-        {/* {windowType.isMobile ? (
-          components
-        ) : (
-          <AutoAffix offsetTop={110} container={refContainer} width={width}>
-            {components}
-          </AutoAffix>
-        )} */}
       </section>
     </Container>
   );

@@ -27,15 +27,15 @@ function useWindowSize() {
       let tIsMobile = false;
       let tIsDesktop = false;
 
-      if (window.innerWidth > 1024) {
+      if (window.innerWidth > 1440) {
         tIsDesktop = true;
       }
 
-      if (window.innerWidth < 480) {
+      if (window.innerWidth < 541) {
         tIsMobile = true;
       }
 
-      if (window.innerWidth <= 1024 && window.innerWidth >= 480) {
+      if (window.innerWidth <= 1440 && window.innerWidth >= 541) {
         tIsTable = true;
       }
 
